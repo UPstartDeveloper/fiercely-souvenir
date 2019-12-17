@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'travelly.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'postgres',
+        'NAME': 'travelly',
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
         'PASSWORD': str(os.getenv('DATABASE_PASSWORD')),
