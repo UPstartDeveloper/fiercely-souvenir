@@ -17,7 +17,28 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Travelly</a>
+      <form class="form-inline ml-auto">
+        {% if not user.is_authenticated %}
+            <a href="#" class="btn btn-secondary ml-2">Log In</a>
+            <a href="#" class="btn btn-primary ml-2">Sign Up</a>
+            <a href="#" class="btn btn-primary ml-2">About</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
+            <a href="#" class="btn btn-danger ml-2">Trips</a>
+            <a href="#" class="btn btn-success ml-2">Airlines</a>
+            <a href="#" class="btn btn-success ml-2">Account</a>
+        {% endif %}
+
+      </form>
+    </nav>
+
     {% block content %}
     {% endblock %}
+
+    <!-- footer -->
 </body>
 </html>
