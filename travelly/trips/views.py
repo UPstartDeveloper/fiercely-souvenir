@@ -3,6 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def hello_world(request):
-    '''Display hello world. Base for building front-end first site.'''
-    return render(request, 'trips/index.html')
+def show_trips(request):
+    '''Render index for past trips.'''
+    return render(request, 'trips/all-trips.html')
+
+
+def show_airlines(request):
+    '''Rendrer index for airlines.'''
+    return render(request, 'trips/all-airlines.html')
