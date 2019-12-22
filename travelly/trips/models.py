@@ -7,6 +7,6 @@ class Trip(models.Model):
     pass
 
 
-class Location(model.Model):
+class Location(models.Model):
     '''The place a User can depart from or arrive upon.'''
     pass
