@@ -2,11 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from airlines.models import Airline
 from travelly import settings
-
-
-class Airport(models.Model):
-    '''The place a User can depart from or arrive upon.'''
-    pass
+from django.utils.text import slugify
 
 
 class Trip(models.Model):
@@ -18,12 +14,22 @@ class Trip(models.Model):
                             blank=True, editable=False,
                             help_text="Unique URL path to access this note." +
                                       "Computer Generated.")
-    arrival_airport = models.OneToOneField(Airport, on_delete=models.PROTECT,
-                                           primary_key=False)
     passenger = models.ForeignKey(User, null=True, on_delete=models.PROTECT,
                                   help_text="The user making this journey.")
-    gate_of_entry = ''
-    gate_of_exit = ''
+    arrive_at = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
+                                 blank=True, editable=True)
+    SFO_GATES = (
+        ('G', 'International Terminal G'),
+        ('A', 'International Terminal A'),
+        ('2', 'Terminal 2'),
+        ('1B', 'Harvey Milk Terminal 1B'),
+        ('1C', 'Harvey Milk Terminal 1C'),
+        ('3', 'Terminal 3'),
+    )
+    terminal = models.CharField(max_length=2, choices=SFO_GATES,
+                                help_text=(
+                                    "Where you must checkin for the flight."
+                                ))
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")
