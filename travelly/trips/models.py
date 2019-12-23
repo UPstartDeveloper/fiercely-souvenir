@@ -1,10 +1,14 @@
 from django.db import models
-from travelly.settings import AUTH_USER_MODEL as User
+from django.contrib.auth.models import User
 from airlines.models import Airline
 from travelly import settings
 
 
-# Create your models here.
+class Airport(models.Model):
+    '''The place a User can depart from or arrive upon.'''
+    pass
+
+
 class Trip(models.Model):
     '''A journey taken by a User.'''
     title = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
@@ -14,12 +18,12 @@ class Trip(models.Model):
                             blank=True, editable=False,
                             help_text="Unique URL path to access this note." +
                                       "Computer Generated.")
-    departure_airport = '' # Airport
-    arrival_airport = ''  # Airport
+    arrival_airport = models.OneToOneField(Airport, on_delete=models.PROTECT,
+                                           primary_key=False)
     passenger = models.ForeignKey(User, null=True, on_delete=models.PROTECT,
                                   help_text="The user making this journey.")
-    gate_of_entry = '' # based off airline and departure_airport
-    gate_of_exit = ''  # based off airline and arrival_airport
+    gate_of_entry = ''
+    gate_of_exit = ''
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")
@@ -40,8 +44,3 @@ class Trip(models.Model):
 
         # call save on the superclass
         return super(Trip, self).save(*args, **kwargs)
-
-
-class Airport(models.Model):
-    '''The place a User can depart from or arrive upon.'''
-    pass
