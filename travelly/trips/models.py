@@ -59,7 +59,7 @@ class Trip(models.Model):
             "the time your flight is scheduled to start boarding " +
             "('Boarding Time')." +
             f'2. Check-in time! Please locate {self.terminal}, so that you ' +
-            f'can talk to the nice people at {self.passenger.profile.airline}'
+            f'can talk to the nice people at your airline'
             + f'who will clear your boarding pass, and assess your luggage' +
             'for any bags that need to be checked in.' +
             "3. Go through security! Don't sweat this part: take a deep " +
