@@ -2,12 +2,32 @@
 {% include "navbar.html" %}
 
     {% if user.is_authenticated %}
-        <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
-        <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
-        <a href="#" class="btn btn-danger ml-2">Airlines</a>
-        <a href="#" class="btn btn-danger ml-2">Account</a>
-        <a href="#" class="btn btn-default ml-2">Log Out</a>
+        <li>
+            <div class="navbar-brand d-flex w-50 mr-auto">
+                <span class="text-white">
+                    <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
+                </span>
+            </div>
+        </li>
+        <div class="row ml-auto">
+            <li>
+                <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-danger ml-2">Airlines</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-danger ml-2">Account</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-default ml-2">Log Out</a>
+            </li>
+        </div>
+
+
+
     {% endif %}
 
-    </form>
+</ul>
+</div>
 </nav>
