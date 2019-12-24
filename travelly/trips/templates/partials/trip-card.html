@@ -1,16 +1,20 @@
-<div class="card border-info mb-3" style="max-width: 20rem;">
-  <h5 class="card-header ">{{ note.title }}</h5>
+<div class="card border-info mb-3" style="max-width: 30rem;">
+  <h3 class="card-header ">{{ trip.title }}</h3>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
          <ul>
              <!-- fields in note -->
+             <li>Posted by: {{ trip.passenger }}</li>
+             <li>Travelling to {{ trip.arrive_at}}</li>
+             <li>Went through Terminal {{ trip.terminal }} @ SFO</li>
          </ul>
+    </p>
       <hr>
       <div class="text-right">
           <a href="#" title="See More">See More</a>
       </div>
   </div>
   <div class="card-footer">
-  <small class="text-muted">Created:{{ trip.modified|date:"SHORT_DATETIME_FORMAT" }}</small>
+  <small class="text-muted">Created:{{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</small>
   </div>
 </div>
