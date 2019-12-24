@@ -1,0 +1,7 @@
+<!-- used for create and update views -->
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-success" type="submit" value="Submit">
+</form>
