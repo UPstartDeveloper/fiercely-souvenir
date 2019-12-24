@@ -58,24 +58,24 @@ class Trip(models.Model):
     def instruct(self):
         '''Display info on what the user must do to undertake this Trip.'''
         return (
-            '1. Arrive at SFO International.' +
+            '1. Arrive at SFO International. ' +
             'For novice fliers, I recommend arriving at least 3 hours before' +
-            "the time your flight is scheduled to start boarding " +
-            "('Boarding Time')." +
+            " the time your flight is scheduled to start boarding " +
+            "('Boarding Time'). " +
             f'2. Check-in time! Please locate {self.terminal}, so that you ' +
-            f'can talk to the nice people at your airline'
+            f'can talk to the nice people at your airline '
             + f'who will clear your boarding pass, and assess your luggage' +
-            'for any bags that need to be checked in.' +
+            'for any bags that need to be checked in. ' +
             "3. Go through security! Don't sweat this part: take a deep " +
             'breath, be patient, and be sure to review the guidelines on ' +
             'https://www.tsa.gov/travel/security-screening/whatcanibring/all' +
             ' before your day at the airport! ' +
             "4. You're almost to the plane! Please check your boarding pass to"
             " see which gate you will need to wait at, until it's boarding " +
-            "time." +
-            "5. Get on the plane!" +
+            "time. " +
+            "5. Get on the plane! " +
             "6. Enjoy the ride! Watch movies, read a book, nap, or have a " +
-            'bizarre conversation with the person sitting next to you...' +
+            'bizarre conversation with the person sitting next to you... ' +
             f"7. When you reach your destination at {self.arrive_at}, you " +
             'be able to get off the plane. Congratulations on making the trip!'
         )
