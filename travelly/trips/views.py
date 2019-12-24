@@ -68,3 +68,28 @@ class TripUpdate(UpdateView):
     form_class = TripForm
     template_name = 'trips/update.html'
     queryset = Trip.objects.all()
+
+
+class TripDelete(DeleteView):
+    '''Allows for removal of Trip instances by User.'''
+    model = Trip
+    template = 'trips/deletion.html'
+    success_url = reverse_lazy('trips:all-trips')
+    queryset = Trip.objects.all()
+
+    def get(self, request, pk):
+        """Renders a page to show the boarding instructions for a single Trip.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug field value of the Trip instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        trip = self.get_queryset().get(pk=pk)
+        context = {
+            'trip': trip
+        }
+        return render(request, self.template_name, context)
