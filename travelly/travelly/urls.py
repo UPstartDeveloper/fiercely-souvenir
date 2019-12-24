@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from travelly import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('trips.urls')),
     path('airlines/', include('airlines.urls')),
 ]
+
+# used to serve static files in development
+if settings.DEBUG is True:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    # urlpatterns += static(settings.MEDIA_URL,
+    #                       document_root=settings.MEDIA_ROOT)
