@@ -47,3 +47,16 @@ class TripDetail(DetailView):
             'trip': trip
         }
         return render(request, self.template_name, context)
+
+
+class TripCreate(CreateView):
+    '''Allows user to add new Trip instances.'''
+    model = Trip
+    form_class = TripForm
+    template_name = 'trips/create.html'
+    queryset = Trip.objects.all()
+
+    def form_valid(self, form):
+        '''Initializes the passenger based on who submitted the form.'''
+        form.instance.passenger = self.request.user
+        return super().form_valid(form)
