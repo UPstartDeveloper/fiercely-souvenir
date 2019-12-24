@@ -60,3 +60,11 @@ class TripCreate(CreateView):
         '''Initializes the passenger based on who submitted the form.'''
         form.instance.passenger = self.request.user
         return super().form_valid(form)
+
+
+class TripUpdate(UpdateView):
+    '''Allows for editing of a trip.'''
+    model = Trip
+    form_class = TripForm
+    template_name = 'trips/update.html'
+    queryset = Trip.objects.all()
