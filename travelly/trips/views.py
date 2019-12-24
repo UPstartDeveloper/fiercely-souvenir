@@ -31,7 +31,7 @@ class TripDetail(DetailView):
     model = Trip
     template_name = 'trips/instructions.html'
 
-    def get(self, request, slug):
+    def get(self, request, pk):
         """Renders a page to show the boarding instructions for a single Trip.
 
            Parameters:
@@ -42,7 +42,7 @@ class TripDetail(DetailView):
            HttpResponse: the view of the detail template
 
         """
-        trip = self.get_queryset().get(slug__iexact=slug)
+        trip = self.get_queryset().get(pk=pk)
         context = {
             'trip': trip
         }

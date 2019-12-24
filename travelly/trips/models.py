@@ -28,13 +28,13 @@ class Trip(models.Model):
         ('1C', 'Harvey Milk Terminal 1C'),
         ('3', 'Terminal 3'),
     )
+    terminal_help_text = (
+        "Check " +
+        "https://www.flysfo.com/flight-info/airlines-at-sfo to see which " +
+        " Terminal you need to check in at for your flight."
+    )
     terminal = models.CharField(max_length=2, choices=SFO_GATES,
-                                help_text=(
-                                    "Check " +
-                                    "https://www.flysfo.com/flight-info/airlines-at-sfo " +
-                                    "to see which Terminal you need to check" +
-                                    " in at for your flight."
-                                ))
+                                help_text=terminal_help_text)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")
@@ -45,7 +45,7 @@ class Trip(models.Model):
 
     def get_absolute_url(self):
         '''Returns a fully qualified path for a page (i.e. /my-note).'''
-        path_components = {'slug': self.slug}
+        path_components = {'pk': self.pk}
         return reverse('trips:trip-detail', kwargs=path_components)
 
     def save(self, *args, **kwargs):
