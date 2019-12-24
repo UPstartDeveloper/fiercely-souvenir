@@ -13,6 +13,14 @@ from django.contrib.auth.models import User
 from notes.forms import NoteForm
 
 
-def show_trips(request):
-    '''Render index for past trips.'''
-    return render(request, 'trips/index.html')
+class TripList(ListView):
+    '''Renders all the Trips currently made by site Users.'''
+    model = Trip
+    template_name = 'trips/index.html'
+
+    def get(self, request):
+        '''Render a context containing all Trip instances.'''
+        trips = self.get_queryset().all()
+        return render(request, self.template_name, {
+            'trips': trips
+        })
