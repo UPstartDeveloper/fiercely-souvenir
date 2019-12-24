@@ -9,7 +9,7 @@
 {% block content %}
 
     <div class="container">
-        <h1>Your Trips</h1>
+        <h1>See the Trips! {% if trips %}<small class="text-muted">({{ trips|length }} Trip{{ pages|length|pluralize:"s" }})</small>{% endif %}</h1>
         <div class="card-columns">
             {% for trip in trips %}
                 {% include 'partials/trip-card.html' %}
