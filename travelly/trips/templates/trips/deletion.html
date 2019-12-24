@@ -13,14 +13,14 @@
         {% include "partials/trip-card.html" %}
 
         <h3>This action <strong>cannot</strong> be undone. <br>Are you sure you would like to continue?</h3>
-        <br>
-
         <div class="row">
-            <div class="col-md-offset-1">
+            <div class="offset-md-9">
                 {% include 'form_template.html' %}
             </div>
-            <div class="col-md-offset-9">
-                <a class='ml-auto' href="{% url 'trips:trip-detail' trip.pk %}"><button class="btn btn-danger">Cancel</button></a>
+        </div>
+        <div class="row">
+            <div class="offset-md-9">
+                <a href="{% url 'trips:all-trips' %}">Back to All Trips</a>
             </div>
         </div>
     </div>

@@ -35,6 +35,8 @@
     </p>
 
      <p class="text-muted">Posted by {{ trip.passenger }} on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p><br>
+     <h5><a href="{% url 'trips:change-trip' trip.pk %}">Edit This Trip</a></h5>
+     <h5><a href="{% url 'trips:delete-trip' trip.pk %}">Delete Trip</a></h5>
      <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
 </div>
 

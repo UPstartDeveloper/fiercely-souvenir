@@ -3,5 +3,12 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input class="btn btn-success" type="submit" value="Submit">
+    <br>
+    <div class="row">
+        <div class="col">
+            <input class="btn btn-success" type="submit" value="Submit">
+            <a class='ml-auto' href="{% url 'trips:trip-detail' trip.pk %}"><button class="btn btn-danger">Cancel</button></a>
+        </div>
+    </div>
 </form>
+<br>
