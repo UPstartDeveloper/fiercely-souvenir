@@ -73,7 +73,7 @@ class TripUpdate(UpdateView):
 class TripDelete(DeleteView):
     '''Allows for removal of Trip instances by User.'''
     model = Trip
-    template = 'trips/deletion.html'
+    template_name = 'trips/deletion.html'
     success_url = reverse_lazy('trips:all-trips')
     queryset = Trip.objects.all()
 
