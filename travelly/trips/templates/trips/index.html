@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Your Trips</h1>
         {% for trip in trips %}
-            {{ trip.instruct }}
+            {% include 'partials/trip-card.html' %}
         {% endfor %}
     </div>
 
