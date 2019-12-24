@@ -24,3 +24,26 @@ class TripList(ListView):
         return render(request, self.template_name, {
             'trips': trips
         })
+
+
+class TripDetail(DetailView):
+    '''Displays a page with instructions associated with a specific trip.'''
+    model = Trip
+    template_name = 'trips/instructions.html'
+
+    def get(self, request, slug):
+        """Renders a page to show the boarding instructions for a single Trip.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug field value of the Trip instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        trip = self.get_queryset().get(slug__iexact=slug)
+        context = {
+            'trip': trip
+        }
+        return render(request, self.template_name, context)
