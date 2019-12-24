@@ -1,0 +1,17 @@
+<!-- trips/templates/trips/create.html -->
+{% extends "base.html" %}
+
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>Going Somewhere?</h2>
+        <h3>Tell Us About It!</h3>
+        {% include 'form_template.html' %}
+            <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
+    </div>
+
+{% endblock %}
