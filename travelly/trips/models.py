@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from airlines.models import Airline
 from travelly import settings
 from django.utils.text import slugify
+from django.utils import timezone
 
 
 class Trip(models.Model):
@@ -28,7 +29,10 @@ class Trip(models.Model):
     )
     terminal = models.CharField(max_length=2, choices=SFO_GATES,
                                 help_text=(
-                                    "Where you must checkin for the flight."
+                                    "Check " +
+                                    "https://www.flysfo.com/flight-info/airlines-at-sfo " +
+                                    "to see which Terminal you need to check" +
+                                    " in at for your flight."
                                 ))
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
