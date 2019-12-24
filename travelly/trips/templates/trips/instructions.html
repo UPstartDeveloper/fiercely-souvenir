@@ -1,0 +1,41 @@
+<!-- TripDetail template -->
+{% extends 'base.html' %}
+
+<!-- navbar -->
+{% block navbar %}
+    {% include 'partials/navbar.html' %}
+{% endblock %}
+
+<!-- main content -->
+{% block content %}
+
+<div class="container">
+    <h2>{{ trip.title }}</h2>
+    <!-- format instructions for this trip -->
+    <p>
+        1. Arrive at SFO International. <br>
+        For novice fliers, I recommend arriving at least 3 hours before
+        the time your flight is scheduled to start boarding ("Boarding Time").<br><br>
+        2. Check-in time! Please locate <strong>your terminal: {{ trip.terminal }}</strong>, so that you <br>
+        can talk to the nice people at your airline
+         who will clear your boarding pass, <br>and assess your luggage
+        for any bags that need to be checked in. <br><br>
+        3. Go through security! Don't sweat this part: take a deep
+        breath, be patient, and be sure to review the guidelines on <br>
+        <strong><a href="https://www.tsa.gov/travel/security-screening/whatcanibring/all">The TSA website</a></strong>
+        before your day at the airport! <br><br>
+        4. You're almost to the plane! Please check your boarding pass <br>to
+         see which gate you will need to wait at, until it's boarding
+        time.  <br><br>
+        5. Get on the plane!  <br><br>
+        6. Enjoy the ride! Watch movies, read a book, nap, or have a <br>
+        'bizarre conversation with the person sitting next to you... <br><br>
+        7. When you reach your destination at <strong>your destination: {{ trip.arrive_at }}</strong>, you  <br>
+        will be able to get off the plane. Congratulations on making the trip! <br><br>
+    </p>
+
+     <p class="text-muted">Posted by {{ trip.passenger }} on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p><br>
+     <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
+</div>
+
+{% endblock %}

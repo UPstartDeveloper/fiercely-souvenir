@@ -54,7 +54,7 @@ class Trip(models.Model):
 
         # call save on the superclass
         return super(Trip, self).save(*args, **kwargs)
-
+"""
     def instruct(self):
         '''Display info on what the user must do to undertake this Trip.'''
         return (
@@ -79,3 +79,4 @@ class Trip(models.Model):
             f"7. When you reach your destination at {self.arrive_at}, you " +
             'be able to get off the plane. Congratulations on making the trip!'
         )
+"""
