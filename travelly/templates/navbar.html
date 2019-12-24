@@ -1,24 +1,26 @@
 <!-- navbar for all apps for user who's not authenticated -->
-<nav class="navbar navbar-expand-md navbar-inverse">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+     {% if not user.is_authenticated %}
+    <div class="navbar-brand d-flex w-50">
+          <span class="text-white">
+                <h2>Travelly</h2>
+           </span>
+     </div>
+     {% endif %}
     <!-- smaller button for smaller viewports -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon text-white mr-3"><h4>Options</h4></span>
-        </button>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon text-white"><h4></h4></span>
+     </button>
         <!-- options for user -->
         <div class="collapse navbar-collapse" id="navbarContent">
              <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
                 <!-- buttons chnage based on authentication -->
                   {% if not user.is_authenticated %}
                        <li>
-                          <div class="navbar-brand d-flex w-50 mr-auto">
-                                <span class="text-white">
-                                      <h2>Travelly</h2>
-                                 </span>
-                           </div>
                       </li>
                       <div class="row ml-auto">
                           <li>
-                              <a href="#" class="btn btn-secondary ml-2">Log In</a>
+                              <a href="#" class="btn btn-secondary ml-12">Log In</a>
                           </li>
                           <li>
                               <a href="#" class="btn btn-primary ml-2">Sign Up</a>
@@ -28,6 +30,7 @@
                           </li>
                           <li>
                               <a href="#" class="btn btn-success ml-2">Stories</a>
-                          </li> 
+                          </li>
                       </div>
                   {% endif %}
+            </ul>

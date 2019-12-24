@@ -22,7 +22,6 @@ class TripList(ListView):
     def get(self, request):
         '''Render a context containing all Trip instances.'''
         trips = self.get_queryset().all()
-        print(BASE_DIR)
         return render(request, self.template_name, {
             'trips': trips
         })

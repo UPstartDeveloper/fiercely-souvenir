@@ -2,27 +2,32 @@
 {% include "navbar.html" %}
 
     {% if user.is_authenticated %}
-        <li>
-            <div class="navbar-brand d-flex w-50 mr-auto">
-                <span class="text-white">
-                    <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
-                </span>
-            </div>
-        </li>
-        <div class="row ml-auto">
-            <li>
-                <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
-            </li>
-            <li>
-                <a href="#" class="btn btn-danger ml-2">Airlines</a>
-            </li>
-            <li>
-                <a href="#" class="btn btn-danger ml-2">Account</a>
-            </li>
-            <li>
-                <a href="#" class="btn btn-default ml-2">Log Out</a>
-            </li>
-        </div>
+
+    <div class="navbar-brand d-flex w-50 mr-auto">
+        <span class="text-white">
+            <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
+        </span>
+    </div>
+
+    {% endif %}
+
+        {% if user.is_authenticated %}
+            <ul style="list-style-type: none;">
+                <div class="row ml-auto">
+                    <li>
+                        <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-danger ml-2">Airlines</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-danger ml-2">Account</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-secondary ml-2">Log Out</a>
+                    </li>
+                </div>
+            </ul>
 
 
 
