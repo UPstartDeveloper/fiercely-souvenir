@@ -11,7 +11,6 @@ from django.http import HttpResponseRedirect
 from trips.models import Trip
 from django.contrib.auth.models import User
 from trips.forms import TripForm
-from travelly.settings import BASE_DIR
 
 
 class TripList(ListView):
