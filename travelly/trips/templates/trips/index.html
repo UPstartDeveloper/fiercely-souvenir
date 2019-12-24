@@ -10,9 +10,11 @@
 
     <div class="container">
         <h1>Your Trips</h1>
-        {% for trip in trips %}
-            {% include 'partials/trip-card.html' %}
-        {% endfor %}
+        <div class="card-columns">
+            {% for trip in trips %}
+                {% include 'partials/trip-card.html' %}
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
