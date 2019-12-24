@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from trips.models import Trip
 from django.contrib.auth.models import User
-from notes.forms import NoteForm
+from trips.forms import TripForm
 
 
 class TripList(ListView):

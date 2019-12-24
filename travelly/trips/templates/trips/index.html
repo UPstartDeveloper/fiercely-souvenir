@@ -4,6 +4,9 @@
 
     <div class="container">
         <h1>Your Trips</h1>
+        {% for trip in trips %}
+            {{ trip }}
+        {% endfor %}
     </div>
 
 {% endblock %}
