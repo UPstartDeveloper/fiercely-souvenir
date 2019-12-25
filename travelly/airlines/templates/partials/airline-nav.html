@@ -28,7 +28,7 @@
                           <a href="#" class="btn btn-danger ml-2">Trips</a>
                       </li>
                       <li>
-                          <a href="#" class="btn btn-danger ml-2">Account</a>
+                          <a href="{% url 'accounts:acct_info' user.id %}" class="btn btn-danger ml-2">Account</a>
                       </li>
                       <li>
                            <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>

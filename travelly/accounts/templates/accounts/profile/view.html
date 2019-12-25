@@ -1,0 +1,14 @@
+<!-- BASE_DIR/accounts/templates/accounts/profile/view.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block navbar %}
+    {% include "partials/nav-accounts.html" %}
+{% endblock %}
+
+<!-- User Account Page -->
+{% block content %}
+    <div class="container">
+        <h1>{{ user.username }}'s Account Info</h1>
+    </div>
+{% endblock %}
