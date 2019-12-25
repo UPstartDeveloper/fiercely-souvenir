@@ -20,7 +20,7 @@
          <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
             <!-- buttons change based on authentication -->
               {% if user.is_authenticated %}
-                  <div class="row ml-auto">
+                  <div class="row ml-auto mr-2">
                       <li>
                           <a href="#" class="btn btn-success ml-2">Update Account Info</a>
                       </li>
@@ -31,7 +31,7 @@
                           <a href="#" class="btn btn-danger ml-2">Trips</a>
                       </li>
                       <li>
-                          <a href="#" class="btn btn-secondary ml-2">Log Out</a>
+                          <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
                       </li>
                   </div>
               {% endif %}
