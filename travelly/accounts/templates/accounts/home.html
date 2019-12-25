@@ -1,17 +1,15 @@
 <!-- accounts/templates/accounts/home.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% include 'partials/nav-accounts.html' %}
+{% endblock %}
+
 
 <!-- display the landing page content for the website -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% block content %}
 
-    <p>Hello World!</p>
+<h1>Hello World!</h1>
 
-</body>
-</html>
+{% endblock %}
