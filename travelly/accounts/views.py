@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def launch_page(request):
+    '''Return the landing page template.'''
+    return render(request, 'accounts/home.html')
