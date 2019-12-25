@@ -19,7 +19,7 @@ from travelly import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('trips.urls')),
+    path('trips/', include('trips.urls')),
     path('airlines/', include('airlines.urls')),
 ]
 
