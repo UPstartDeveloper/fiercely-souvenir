@@ -1,10 +1,15 @@
 <!-- TripDetail template -->
 {% extends 'base.html' %}
 
-<!-- navbar -->
+{<!-- NAVBAR -->
 {% block navbar %}
-    {% include 'partials/nav-trips.html' %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-trips.html' %}
+    {% endif %}
 {% endblock %}
+
 
 <!-- main content -->
 {% block content %}

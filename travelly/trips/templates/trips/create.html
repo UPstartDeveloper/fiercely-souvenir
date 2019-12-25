@@ -1,9 +1,15 @@
 <!-- trips/templates/trips/create.html -->
 {% extends "base.html" %}
 
+{<!-- NAVBAR -->
 {% block navbar %}
-    {% include 'partials/nav-trips.html' %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-trips.html' %}
+    {% endif %}
 {% endblock %}
+
 
 
 {% block content %}
