@@ -96,6 +96,10 @@ DATABASES = {
 }
 
 
+# Login and Logout Redirect Settings
+LOGIN_REDIRECT_URL = 'trips:all-trips'
+LOGOUT_REDIRECT_URL = 'accounts:login'
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
