@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 def show_airlines(request):
     '''Rendrer index for airlines.'''
-    return render(request, 'trips/index.html')
+    return render(request, 'airlines/all-airlines.html')
