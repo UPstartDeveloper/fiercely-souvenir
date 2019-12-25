@@ -8,16 +8,14 @@
      </div>
      {% endif %}
     <!-- smaller button for smaller viewports -->
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon text-white"><h4></h4></span>
      </button>
         <!-- options for user -->
         <div class="collapse navbar-collapse" id="navbarContent">
              <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
-                <!-- buttons chnage based on authentication -->
+                <!-- buttons change based on authentication -->
                   {% if not user.is_authenticated %}
-                       <li>
-                      </li>
                       <div class="row ml-auto">
                           <li>
                               <a href="#" class="btn btn-secondary ml-12">Log In</a>
