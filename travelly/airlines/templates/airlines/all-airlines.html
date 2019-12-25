@@ -10,6 +10,15 @@
 
     <div class="container">
         <h1>Trendy Airlines</h1>
+
+        {% if airlines %}
+            <div class="card-columns">
+                <!-- display airlines -->
+            </div>
+        {% else %}
+        <!-- notify user why the page is empty -->
+            <div class="alert alert-primary" role="alert">There are currently no airlines to display.</div>
+        {% endif %}
     </div>
 
 {% endblock %}
