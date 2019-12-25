@@ -1,38 +1,40 @@
-<!-- navbar for auth'd user in trips app -->
-{% include "navbar.html" %}
-
-    {% if user.is_authenticated %}
-
-    <div class="navbar-brand d-flex w-50 mr-auto">
+{% load static %}
+<!-- navbar for all apps for user who IS authenticated -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+     {% if user.is_authenticated %}
+    <div class="navbar-brand d-flex w-50 ml-2">
         <span class="text-white">
-            <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
+            <div class="row">
+                <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
+                <img src="{% static 'images/air-transport.png' %}" width=50px height=50px>
+            </div>
         </span>
+     </div>
+     {% endif %}
+    <!-- smaller button for smaller viewports -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon text-white"><h4></h4></span>
+     </button>
+    <!-- options for user -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
+            <!-- buttons change based on authentication -->
+              {% if user.is_authenticated %}
+                  <div class="row ml-auto">
+                      <li>
+                          <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
+                      </li>
+                      <li>
+                          <a href="#" class="btn btn-danger ml-2">Airlines</a>
+                      </li>
+                      <li>
+                          <a href="#" class="btn btn-danger ml-2">Account</a>
+                      </li>
+                      <li>
+                          <a href="#" class="btn btn-secondary ml-2">Log Out</a>
+                      </li>
+                  </div>
+              {% endif %}
+        </ul>
     </div>
-
-    {% endif %}
-
-        {% if user.is_authenticated %}
-            <ul style="list-style-type: none;">
-                <div class="row ml-auto">
-                    <li>
-                        <a href="{% url 'trips:create-trip' %}" class="btn btn-success ml-2">New Trip</a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-danger ml-2">Airlines</a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-danger ml-2">Account</a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-secondary ml-2">Log Out</a>
-                    </li>
-                </div>
-            </ul>
-
-
-
-    {% endif %}
-
-</ul>
-</div>
 </nav>
