@@ -1,10 +1,14 @@
+{% load static %}
 <!-- navbar for all apps for user who's not authenticated -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
      {% if not user.is_authenticated %}
-    <div class="navbar-brand d-flex w-50">
-          <span class="text-white">
+    <div class="navbar-brand d-flex w-50 ml-2">
+        <span class="text-white">
+            <div class="row">
                 <h2>Travelly</h2>
-           </span>
+                <img src="{% static 'images/air-transport.png' %}" width=50px height=50px>
+            </div>
+        </span>
      </div>
      {% endif %}
     <!-- smaller button for smaller viewports -->
