@@ -1,0 +1,20 @@
+<!-- accounts/templates/accounts/profile/delete.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% include "partials/nav-accounts.html" %}
+{% endblock %}
+
+<!-- DELETE FORM -->
+{% block content %}
+    <div class="container">
+        <h2 class="text-primary">Delete Your Account</h2>
+        <br>
+        <p>This action <strong>cannot</strong> be undone. Are you sure you would like to continue?</p>
+        {% include 'form_template.html' %}
+        <!-- Cancel deletion -->
+        <a class="btn btn-info" href="{% url 'accounts:acct_info' user.id %}">Back to Account</a>
+        <br><br>
+    </div>
+{% endblock %}
