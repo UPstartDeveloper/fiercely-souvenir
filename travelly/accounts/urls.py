@@ -30,7 +30,9 @@ urlpatterns = [
          name='passwd_change_complete'),
     path('reset-password/', PasswordResetView.as_view(),
          name='passwd_reset'),
-    # PasswordResetDone View
+    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
+          template_name='accounts/password/reset/email_sent.html'),
+         name='password_reset_done'),
     # PasswordResetConfirm View
     # PasswordResetComplete view
     # profile READ, UPDATE, and DELETE
