@@ -36,6 +36,10 @@ urlpatterns = [
          name='password_reset_email_sent'),
     path('password-reset-confirm/<uidb64>/<token>/',
          PasswordResetConfirm.as_view(), name='passwd_reset_confirm'),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(
+                    template_name='accounts/password/reset/complete.html'),
+         name='passwd_reset_complete'),
     # PasswordResetComplete view
     # profile READ, UPDATE, and DELETE
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='acct_info'),
