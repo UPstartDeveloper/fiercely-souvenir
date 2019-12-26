@@ -80,6 +80,40 @@ class AccountUpdate(UserPassesTestMixin, UpdateView):
         return (self.request.user == user)
 
 
+class AccountPictureUpdate(UserPassesTestMixin, UpdateView):
+    '''User is allowed to change their profile picture.'''
+    template_name = 'accounts/profile/change-pic.html'
+    model = Profile
+    fields = ['mugshot']
+    queryset = User.objects.all()
+
+    def get_success_url(self):
+        '''Redirect to the Profile page of the User after form submission.'''
+        url = self.object.profile.get_absolute_url()
+        return url
+
+    def leave_mugshot_unchanged(self, form):
+        '''Leave the Profile image as its current value.'''
+        current_image = form.instance.profile.mugshot
+        form.instance.profile.mugshot = current_image
+
+    def form_valid(self, form):
+        '''Changes the image of the related Profile of the user.'''
+        upload = self.request.FILES.get('mugshot')
+        if upload is not None:
+            form.instance.mugshot = upload
+        else:
+            # if the user submitted without uploading, leave mugshot unchanged
+            self.leave_mugshot_unchanged(form)
+        form.instance.profile.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        '''Ensure only the User can change their own profile image.'''
+        user = self.get_object()
+        return (self.request.user.profile == user.profile)
+
+
 class UserDelete(UserPassesTestMixin, DeleteView):
     '''User is able to delete their own account from the database.'''
     model = User
