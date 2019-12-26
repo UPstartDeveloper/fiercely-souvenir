@@ -8,6 +8,7 @@ from accounts.views import (
     UserDelete,
     BeginPasswordChange,
     PasswordResetView,
+    PasswordResetConfirm,
 )
 
 app_name = 'accounts'
@@ -32,8 +33,9 @@ urlpatterns = [
          name='passwd_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
           template_name='accounts/password/reset/email_sent.html'),
-         name='password_reset_done'),
-    # PasswordResetConfirm View
+         name='password_reset_email_sent'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         PasswordResetConfirm.as_view(), name='passwd_reset_confirm'),
     # PasswordResetComplete view
     # profile READ, UPDATE, and DELETE
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='acct_info'),
