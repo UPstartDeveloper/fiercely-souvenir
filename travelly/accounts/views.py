@@ -114,17 +114,3 @@ class BeginPasswordChange(SuccessMessageMixin,
     success_url = reverse_lazy('accounts:acct_info')
     success_message = 'Your password was changed successfully!'
     queryset = User.objects.all()
-
-    def get(self, request, pk):
-        """Renders a page with a form to delete the User account.
-
-           Parameters:
-           request(HttpRequest): request sent to the server from the client
-           pk(int): the value of the id field of the specific User instance
-
-           Returns:
-           HttpResponse: the TemplateResponse with the delete form
-
-        """
-        user = self.queryset.get(id=pk)
-        return render(request, self.template_name)

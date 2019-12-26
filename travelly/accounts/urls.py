@@ -27,6 +27,6 @@ urlpatterns = [
     path('<int:pk>/delete-account/', UserDelete.as_view(),
          name='delete_account'),
     # Advanced auth: change password, reset password
-    path('<int:pk>/password-change/', BeginPasswordChange.as_view(),
+    path('password-change/', BeginPasswordChange.as_view(),
          name='start_passwd_change'),
 ]
