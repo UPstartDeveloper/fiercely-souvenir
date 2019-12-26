@@ -1,0 +1,29 @@
+<!-- accounts/templates/accounts/password/reset/enter_email.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-accounts.html' %}
+    {% endif %}
+{% endblock %}
+
+<!-- Form to Enter Email -->
+{% block content %}
+<div class="container">
+    <h2>No Worries!</h2>
+    <h3>Please enter your email below.</h3>
+    <br>
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        <!-- field to enter email -->
+        <legend class="border-bottom mb-4">We'll send you a link to reset your password!</legend>
+        {{ form }}
+        <br><br>
+        <!-- button to submit form -->
+        <button class="btn btn-primary ml-5" type="submit">Send Reset Email</button>
+    </form>
+</div>
+{% endblock %}
