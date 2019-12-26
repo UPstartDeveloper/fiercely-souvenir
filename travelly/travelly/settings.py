@@ -35,7 +35,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
     'airlines',
     'accounts',
     'storages',
-    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [
@@ -155,6 +153,22 @@ AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Settings for sending email
+
+PASS_1 = os.getenv('EMAIL_PASS_1')
+PASS_2 = os.getenv('EMAIL_PASS_2')
+PASS_3 = os.getenv('EMAIL_PASS_3')
+PASS_4 = os.getenv('EMAIL_PASS_4')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = str(os.getenv('EMAIL_USERNAME'))
+EMAIL_HOST_PASSWORD = f"{PASS_1} {PASS_2} {PASS_3} {PASS_4}"
+
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')
 
 
 # provision PostgreSQL for deployment

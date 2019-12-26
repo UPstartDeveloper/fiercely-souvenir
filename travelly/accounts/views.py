@@ -114,3 +114,10 @@ class BeginPasswordChange(SuccessMessageMixin,
     success_url = reverse_lazy('accounts:passwd_change_complete')
     # success_message = 'Your password was changed successfully!'
     queryset = User.objects.all()
+
+
+class PasswordResetView(auth_views.PasswordResetView):
+    '''Emails user with a secure token to change their forgotten password.'''
+    success_url = reverse_lazy('accounts:password_reset_email_sent')
+    template_name = 'accounts/password/reset/enter_email.html'
+    email_template_name = 'accounts/password/reset/reset-email.html'
