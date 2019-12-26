@@ -101,7 +101,7 @@ class AccountPictureUpdate(UserPassesTestMixin, UpdateView):
         '''Changes the image of the related Profile of the user.'''
         upload = self.request.FILES.get('mugshot')
         if upload is not None:
-            form.instance.mugshot = upload
+            form.instance.profile.mugshot = upload
         else:
             # if the user submitted without uploading, leave mugshot unchanged
             self.leave_mugshot_unchanged(form)
