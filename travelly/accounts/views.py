@@ -59,3 +59,21 @@ class ProfileDetail(UserPassesTestMixin, DetailView):
         '''Ensures that users can only view their own Profiles.'''
         user = self.get_object()
         return (self.request.user.profile == user.profile)
+
+
+class AccountUpdate(UserPassesTestMixin, UpdateView):
+    '''User is allowed to change their own account information.'''
+    model = User
+    template_name = 'accounts/profile/change-info.html'
+    fields = ['username', 'email', 'first_name', 'last_name']
+    queryset = User.objects.all()
+
+    def get_success_url(self):
+        '''Redirect to the profile page of the User.'''
+        url = self.object.profile.get_absolute_url()
+        return url
+
+    def test_func(self):
+        '''Ensure only the User can change their own account information.'''
+        user = self.get_object()
+        return (self.request.user == user)

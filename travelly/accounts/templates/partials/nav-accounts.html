@@ -20,20 +20,20 @@
          <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
             <!-- buttons change based on authentication -->
               {% if user.is_authenticated %}
-                  <div class="row ml-auto mr-2">
-                      <li>
-                          <a href="#" class="btn btn-success ml-2">Update Account Info</a>
-                      </li>
-                      <li>
-                          <a href="{% url 'airlines:all-airlines' %}" class="btn btn-danger ml-2">Airlines</a>
-                      </li>
-                      <li>
-                          <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>
-                      </li>
-                      <li>
-                          <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
-                      </li>
-                  </div>
+                <div class="row ml-auto mr-2">
+                    <li>
+                        <a href="{% url 'accounts:change-info' user.id %}" class="btn btn-success ml-2">Update Account Info</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'airlines:all-airlines' %}" class="btn btn-danger ml-2">Airlines</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
+                    </li>
+                </div>
               {% endif %}
         </ul>
     </div>
