@@ -25,10 +25,10 @@
                           <a href="#" class="btn btn-success ml-2">Update Account Info</a>
                       </li>
                       <li>
-                          <a href="#" class="btn btn-danger ml-2">Airlines</a>
+                          <a href="{% url 'airlines:all-airlines' %}" class="btn btn-danger ml-2">Airlines</a>
                       </li>
                       <li>
-                          <a href="#" class="btn btn-danger ml-2">Trips</a>
+                          <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>
                       </li>
                       <li>
                           <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
