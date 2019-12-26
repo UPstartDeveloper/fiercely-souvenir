@@ -23,6 +23,10 @@ urlpatterns = [
     # Advanced auth: change password, reset password
     path('password-change/', BeginPasswordChange.as_view(),
          name='start_passwd_change'),
+    path('password-change/done/',
+         auth_views.PasswordChangeDoneView.as_view(template_name=(
+            'accounts/password/change-complete.html')),
+         name='passwd_change_complete'),
     # profile READ, UPDATE, and DELETE
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='acct_info'),
     path('<int:pk>/change-account-details/', AccountUpdate.as_view(),

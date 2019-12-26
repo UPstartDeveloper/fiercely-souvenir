@@ -8,6 +8,7 @@ from bootstrap_modal_forms.forms import BSModalForm
 # credit for subclassing UserCreationForm belongs to
 # https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
 
+
 class SignUpForm(UserCreationForm):
     '''A form that handles registering new users.'''
     class Meta:
