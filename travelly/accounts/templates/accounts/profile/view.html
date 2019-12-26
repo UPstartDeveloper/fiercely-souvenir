@@ -51,8 +51,10 @@
             <!-- user picture -->
             <img src="{{ user.profile.mugshot.url }}" alt="Profile picture." height=400px width=390px>
             <br><br>
-            <!-- option to chnage profile image -->
-            <!-- option to chnage password goes here -->
+            <!-- option to change profile image -->
+            <!-- option to change password goes here -->
+            <a href="{% url 'accounts:start_passwd_change' user.id %}" class="btn btn-info ml-2 mr-2">Change Password</a>
+            <br><br>
         </div>
     </div>
 </div>

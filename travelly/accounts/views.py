@@ -10,6 +10,7 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.contrib.auth import views as auth_views
 
 
 def launch_page(request):
@@ -98,11 +99,32 @@ class UserDelete(UserPassesTestMixin, DeleteView):
 
         """
         user = self.get_queryset().get(id=pk)
-        profile = user.profile
-        context = {'profile': profile}
-        return render(request, self.template_name, context)
+        return render(request, self.template_name)
 
     def test_func(self):
         '''Ensure that only users can delete their own accounts on the site.'''
         user = self.get_object()
         return (self.request.user.profile == user.profile)
+
+
+class BeginPasswordChange(SuccessMessageMixin,
+                          auth_views.PasswordChangeView):
+    '''User is able to change their password.'''
+    template_name = 'accounts/password/password-change.html'
+    success_url = reverse_lazy('accounts:acct_info')
+    success_message = 'Your password was changed successfully!'
+    queryset = User.objects.all()
+
+    def get(self, request, pk):
+        """Renders a page with a form to delete the User account.
+
+           Parameters:
+           request(HttpRequest): request sent to the server from the client
+           pk(int): the value of the id field of the specific User instance
+
+           Returns:
+           HttpResponse: the TemplateResponse with the delete form
+
+        """
+        user = self.queryset.get(id=pk)
+        return render(request, self.template_name)
