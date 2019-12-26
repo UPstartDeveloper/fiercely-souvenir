@@ -8,13 +8,50 @@
 
 <!-- User Account Page -->
 {% block content %}
-    <div class="container">
-        <h1>Account Info</h1>
-        <!-- display account info listed for user -->
-        <img src="{{ user.profile.mugshot.url }}" alt="">
-        <!-- include profile image -->
-
-        <!-- include options to change account info, or delete account -->
-
+<!-- USER PROFILE -->
+<div class="container">
+    <div class="row">
+        <!-- if user has just changed password -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }} alert alert-success"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- account info -->
+            <br>
+            <div class="row">
+                <h2>Account Information:</h2>
+            </div>
+            <br>
+            <div class="row">
+                <!-- Display user's name if possible -->
+                {% if user.first_name == '' and user.last_name == '' %}
+                    <p><strong>Full Name Unavailable</strong></p>
+                {% else %}
+                    <p>Name : {{ user.first_name }} {{ user.last_name }}</p>
+                {% endif %}
+            </div>
+            <div class="row">
+                <p>Email: {{ user.email }}</p>
+            </div>
+            <br>
+            <div class="row">
+                <!-- Button to update User information Here -->
+                <!-- Button to delete account Here -->
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- user picture -->
+            <img src="{{ user.profile.mugshot.url }}" alt="Profile picture." height=400px width=390px>
+            <br><br>
+            <!-- option to chnage profile image -->
+            <!-- option to chnage password goes here -->
+        </div>
+    </div>
+</div>
 {% endblock %}
