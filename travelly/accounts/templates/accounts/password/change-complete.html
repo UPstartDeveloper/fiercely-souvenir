@@ -1,0 +1,21 @@
+<!-- accounts/templates/accounts/password/change-complete.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% include "partials/nav-accounts.html" %}
+{% endblock %}
+
+<!-- INFORM USER, Link back to Profile Page -->
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p>
+                <strong>Nice!</strong> You successfully changed your password.
+                You may now continue <a href="{% url 'accounts:acct_info' user.id %}" class="alert-link">back to your profile</a>.
+            </p>
+        </div>
+    </div>
+{% endblock %}

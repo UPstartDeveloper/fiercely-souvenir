@@ -112,11 +112,5 @@ class BeginPasswordChange(SuccessMessageMixin,
     '''User is able to change their password.'''
     template_name = 'accounts/password/password-change.html'
     success_url = reverse_lazy('accounts:passwd_change_complete')
-    success_message = 'Your password was changed successfully!'
+    # success_message = 'Your password was changed successfully!'
     queryset = User.objects.all()
-
-
-"""
-class CompletePasswordChange(auth_views.PasswordChangeDoneView):
-    '''A success template after the user chnages their password.'''
-"""
