@@ -62,15 +62,20 @@ class TripCreate(CreateView):
         return super().form_valid(form)
 
 
-class TripUpdate(UpdateView):
+class TripUpdate(UserPassesTestMixin, UpdateView):
     '''Allows for editing of a trip.'''
     model = Trip
     form_class = TripForm
     template_name = 'trips/update.html'
     queryset = Trip.objects.all()
 
+    def test_func(self):
+        '''Ensures the user editing the trip is the passenger who posted it.'''
+        trip = self.get_object()
+        return (self.request.user == trip.passenger)
 
-class TripDelete(DeleteView):
+
+class TripDelete(UserPassesTestMixin, DeleteView):
     '''Allows for removal of Trip instances by User.'''
     model = Trip
     template_name = 'trips/deletion.html'
@@ -93,3 +98,8 @@ class TripDelete(DeleteView):
             'trip': trip
         }
         return render(request, self.template_name, context)
+
+    def test_func(self):
+        '''Ensures the user removing the trip is the one who posted it.'''
+        trip = self.get_object()
+        return (self.request.user == trip.passenger)
