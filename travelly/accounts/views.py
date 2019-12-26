@@ -77,3 +77,32 @@ class AccountUpdate(UserPassesTestMixin, UpdateView):
         '''Ensure only the User can change their own account information.'''
         user = self.get_object()
         return (self.request.user == user)
+
+
+class UserDelete(UserPassesTestMixin, DeleteView):
+    '''User is able to delete their own account from the database.'''
+    model = User
+    template_name = 'accounts/profile/delete.html'
+    success_url = reverse_lazy('accounts:login')
+    # queryset = User.objects.all()
+
+    def get(self, request, pk):
+        """Renders a page with a form to delete the User account.
+
+           Parameters:
+           request(HttpRequest): request sent to the server from the client
+           pk(int): the value of the id field of the specific User instance
+
+           Returns:
+           HttpResponse: the TemplateResponse with the delete form
+
+        """
+        user = self.get_queryset().get(id=pk)
+        profile = user.profile
+        context = {'profile': profile}
+        return render(request, self.template_name, context)
+
+    def test_func(self):
+        '''Ensure that only users can delete their own accounts on the site.'''
+        user = self.get_object()
+        return (self.request.user.profile == user.profile)

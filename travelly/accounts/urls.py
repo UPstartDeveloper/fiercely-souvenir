@@ -5,6 +5,7 @@ from accounts.views import (
     SignUpView,
     ProfileDetail,
     AccountUpdate,
+    UserDelete,
 )
 
 app_name = 'accounts'
@@ -22,5 +23,7 @@ urlpatterns = [
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='acct_info'),
     path('<int:pk>/change-account-details/', AccountUpdate.as_view(),
          name='change-info'),
+    path('<int:pk>/delete-account/', UserDelete.as_view(),
+         name='delete_account'),
     # Advanced auth: reset password, change password?
 ]
