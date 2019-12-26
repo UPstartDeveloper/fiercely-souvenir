@@ -20,13 +20,13 @@ urlpatterns = [
          name='login'),
     path('logout/',
          auth_views.LogoutView.as_view(), name='logout'),
+    # Advanced auth: change password, reset password
+    path('password-change/', BeginPasswordChange.as_view(),
+         name='start_passwd_change'),
     # profile READ, UPDATE, and DELETE
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='acct_info'),
     path('<int:pk>/change-account-details/', AccountUpdate.as_view(),
          name='change-info'),
     path('<int:pk>/delete-account/', UserDelete.as_view(),
          name='delete_account'),
-    # Advanced auth: change password, reset password
-    path('password-change/', BeginPasswordChange.as_view(),
-         name='start_passwd_change'),
 ]

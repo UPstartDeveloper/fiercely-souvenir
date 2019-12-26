@@ -2,10 +2,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from accounts.models import Profile
+import django.contrib.auth.forms as auth_forms
+from bootstrap_modal_forms.forms import BSModalForm
 
-# credit for subclassing forms.Form belongs to
+# credit for subclassing UserCreationForm belongs to
 # https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
-
 
 class SignUpForm(UserCreationForm):
     '''A form that handles registering new users.'''
@@ -26,3 +27,7 @@ class SignUpForm(UserCreationForm):
             user.save()
 
         return user
+
+
+class ChangePasswordForm(BSModalForm, auth_forms.PasswordChangeForm):
+    pass

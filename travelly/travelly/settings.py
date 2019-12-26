@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'airlines',
     'accounts',
     'storages',
+    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [
