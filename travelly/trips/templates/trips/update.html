@@ -12,7 +12,9 @@
         <h2>Notice a Mistake?</h2>
         <h3>Please change your details below.</h3>
         {% include 'form_template.html' %}
-            <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
+        <a class='ml-auto' href="{% url 'trips:trip-detail' trip.pk %}"><button class="btn btn-danger">Cancel</button></a>
+        <br><br>   
+        <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
 
 
 {% endblock %}

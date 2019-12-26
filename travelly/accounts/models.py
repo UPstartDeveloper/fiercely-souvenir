@@ -19,4 +19,4 @@ class Profile(models.Model):
     def get_absolute_url(self):
         '''Returns a fully qualified path for user profile.'''
         path_components = {'pk': self.user.id}
-        return reverse('accounts:user_info', kwargs=path_components)
+        return reverse('accounts:acct_info', kwargs=path_components)

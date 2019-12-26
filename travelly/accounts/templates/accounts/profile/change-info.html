@@ -5,3 +5,15 @@
 {% block navbar %}
     {% include "partials/nav-accounts.html" %}
 {% endblock %}
+
+{% block content %}
+    <!-- form to chnage account info -->
+    <div class="container">
+        <h2>Change Account Info</h2>
+        <br>
+        {% include 'form_template.html' %}
+        <!-- Cancel editing -->
+    <a class="btn btn-info" href="{% url 'accounts:acct_info' user.id %}">Cancel Changes</a>
+    <br><br>
+    </div>
+{% endblock %}
