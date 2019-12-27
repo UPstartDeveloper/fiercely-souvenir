@@ -29,3 +29,28 @@ class AirlineList(ListView):
         """
         airlines = self.get_queryset().all()
         return render(request, self.template_name, {'airlines': airlines})
+
+
+class AirlineDetail(DetailView):
+    '''A look at an airline with all its reviews underneath.'''
+    model = Airline
+    template_name = 'airlines/airline/details.html'
+
+    def get(self, request, slug):
+        """Renders a page to show the boarding instructions for a single Trip.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug field value of the Airline instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        airline = self.get_queryset().get(slug__iexact=slug)
+        reviews = Review.objects.filter(airline=airline)
+        context = {
+            'airline': airline,
+            'reviews': reviews
+        }
+        return render(request, self.template_name, context)

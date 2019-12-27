@@ -36,7 +36,7 @@ class TripDetail(DetailView):
 
            Parameters:
            request(HttpRequest): the GET request sent to the server
-           slug(slug): unique slug field value of the Trip instance
+           pk(int): unique id value of the Trip instance
 
            Returns:
            HttpResponse: the view of the detail template
