@@ -2,8 +2,13 @@
 
 <!-- NAVBAR -->
 {% block navbar %}
-    {% include 'partials/airline-nav.html' %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/airline-nav.html' %}
+    {% endif %}
 {% endblock %}
+
 
 
 <!-- Main content -->

@@ -3,8 +3,13 @@
 
 <!-- NAVBAR -->
 {% block navbar %}
-    {% include "partials/nav-accounts.html" %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-accounts.html' %}
+    {% endif %}
 {% endblock %}
+
 
 {% block content %}
     <!-- form to change profile image -->
