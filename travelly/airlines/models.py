@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Review(models.Model):
@@ -17,4 +18,4 @@ class Cost(models.Model):
 
 class Airline(models.Model):
     '''Provides User with flying services.'''
-    pass
+    passengers = models.ManyToManyField(User, on_delete=models.PROTECT)
