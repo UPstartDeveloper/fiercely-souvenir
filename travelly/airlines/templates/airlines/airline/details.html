@@ -1,5 +1,6 @@
 <!-- airlines/templates/airlines/airline/details.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 <!-- NAVBAR -->
 {% block navbar %}
@@ -9,7 +10,6 @@
         {% include 'partials/airline-nav.html' %}
     {% endif %}
 {% endblock %}
-
 
 
 <!-- Main content -->
@@ -30,18 +30,24 @@
                 {% endif %}
                 <!-- List of reviews -->
                 <h3>Reviews By Passengers:</h3>
+                <!-- Links to Add Reviews Goes here-->
                 <ol>
-                    {#{% for review in reviews %}#}
+                    {% for review in reviews %}
                     <div class="media mt-3">
                         <li>
                             <p class=pr-3>{{ review.author.first_name }} Says:</p>
                             <div class="media-body">
-                                <h5 class="mt-0">Media heading</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                <h5 class="mt-0">{{ review.title }}</h5>
+                                Rating: {{ review.rating }} out of 5! <br>
+                                Cost: ${{ review.price }} <br>
+                                {{ review.comments }}
+                                <!-- Link to Update/Delete a Review -->
+                                <a href=""></a>
+                                <a href=""></a>
                             </div>
                         </li>
                     </div>
-                    {#{% endfor %}#}
+                    {% endfor %}
                 </ol>
             </div>
         </div>
