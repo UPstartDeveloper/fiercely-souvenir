@@ -14,7 +14,7 @@ class Trip(models.Model):
                              help_text="A memorable title for your trip.")
     slug = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
                             blank=True, editable=False,
-                            help_text="Unique URL path to access this note." +
+                            help_text="Unique URL path to access this trip." +
                                       "Computer Generated.")
     passenger = models.ForeignKey(User, null=True, on_delete=models.PROTECT,
                                   help_text="The user making this journey.")
