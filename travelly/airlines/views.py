@@ -65,7 +65,7 @@ class AirlineCreate(LoginRequiredMixin, CreateView):
     login_url = 'accounts:login'
 
     def form_valid(self, form):
-        '''Initializes author and image (if there is one) of new Note.'''
+        '''Initializes author and image (if there is one) of new Airline.'''
         form.instance.logo = self.request.FILES.get('logo')
         form.instance.verified = False  # can be changed later by staff
         return super().form_valid(form)
@@ -79,5 +79,7 @@ class AirlineUpdate(UpdateView):
 
     def form_valid(self, form):
         '''Changes the image (if there is a new upload) of the Airline.'''
-        form.instance.logo = self.request.FILES.get('logo')
+        upload = self.request.FILES.get('logo')
+        if upload is not None:
+            form.instance.logo = upload
         return super().form_valid(form)
