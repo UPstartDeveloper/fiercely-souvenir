@@ -67,5 +67,17 @@ class AirlineCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         '''Initializes author and image (if there is one) of new Note.'''
         form.instance.logo = self.request.FILES.get('logo')
-        form.instance.verified = False
+        form.instance.verified = False  # can be changed later by staff
+        return super().form_valid(form)
+
+
+class AirlineUpdate(UpdateView):
+    '''Submit a form to edit a pre-existing Airline.'''
+    model = Airline
+    form_class = AirlineForm
+    template_name = 'airlines/airline/edit.html'
+
+    def form_valid(self, form):
+        '''Changes the image (if there is a new upload) of the Airline.'''
+        form.instance.logo = self.request.FILES.get('logo')
         return super().form_valid(form)

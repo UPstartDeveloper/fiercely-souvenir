@@ -28,6 +28,9 @@
                 {% else %}
                     <p class="text-danger">Not Verified </p>
                 {% endif %}
+                <!-- Link to Airline update and delete views -->
+                <a class="mr-3" href="{% url 'airlines:update_airline' airline.slug %}">Edit Airline</a>
+                <br><br>
                 <!-- List of reviews -->
                 <h3>Reviews By Passengers:</h3>
                 <!-- Links to Add Reviews Goes here-->

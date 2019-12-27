@@ -2,7 +2,8 @@ from django.urls import path
 from airlines.views import (
     AirlineList,
     AirlineDetail,
-    AirlineCreate
+    AirlineCreate,
+    AirlineUpdate,
 )
 
 app_name = 'airlines'
@@ -11,4 +12,6 @@ urlpatterns = [
     path('add-airline/', AirlineCreate.as_view(), name='create_airline'),
     path('<slug:slug>/reviews/', AirlineDetail.as_view(),
          name='airline-detail'),
+    path('<slug:slug>/edit-airline-details/', AirlineUpdate.as_view(),
+         name="update_airline"),
 ]
