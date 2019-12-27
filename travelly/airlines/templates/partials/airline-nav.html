@@ -22,7 +22,7 @@
               {% if user.is_authenticated %}
                   <div class="row ml-auto mr-2">
                       <li>
-                          <a href="#" class="btn btn-success ml-2">Add Airline</a>
+                          <a href="{% url 'airlines:create_airline' %}" class="btn btn-success ml-2">Add Airline</a>
                       </li>
                       <li>
                           <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>

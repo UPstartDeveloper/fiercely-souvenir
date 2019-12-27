@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from airlines.models import Airline, Review
 from django.contrib.auth.models import User
+from airlines.forms import AirlineForm
 
 
 class AirlineList(ListView):
@@ -54,3 +55,16 @@ class AirlineDetail(DetailView):
             'reviews': reviews
         }
         return render(request, self.template_name, context)
+
+
+class AirlineCreate(LoginRequiredMixin, CreateView):
+    '''Submit a form to create new Airline.'''
+    model = Airline
+    form_class = AirlineForm
+    template_name = 'airlines/airline/create.html'
+    login_url = 'accounts:login'
+
+    def form_valid(self, form):
+        '''Initializes author and image (if there is one) of new Note.'''
+        form.instance.logo = self.request.FILES.get('logo')
+        return super().form_valid(form)

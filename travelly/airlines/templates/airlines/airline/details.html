@@ -31,22 +31,23 @@
                 <!-- List of reviews -->
                 <h3>Reviews By Passengers:</h3>
                 <!-- Links to Add Reviews Goes here-->
+                <a href="#">Add a Review</a>
                 <ol>
                     {% for review in reviews %}
-                    <div class="media mt-3">
-                        <li>
-                            <p class=pr-3>{{ review.author.first_name }} Says:</p>
-                            <div class="media-body">
-                                <h5 class="mt-0">{{ review.title }}</h5>
-                                Rating: {{ review.rating }} out of 5! <br>
-                                Cost: ${{ review.price }} <br>
-                                {{ review.comments }}
-                                <!-- Link to Update/Delete a Review -->
-                                <a href=""></a>
-                                <a href=""></a>
-                            </div>
-                        </li>
-                    </div>
+                        <div class="media mt-3">
+                            <li>
+                                <p class=pr-3><i>{{ review.author.first_name }} Says:</i></p>
+                                <div class="media-body">
+                                    <h5 class="mt-0">{{ review.title }}</h5>
+                                    Rating: {{ review.rating }} out of 5! <br>
+                                    Cost: ${{ review.price }} <br>
+                                    {{ review.comments }}
+                                    <!-- Link to Update/Delete a Review -->
+                                    <a class="mr-3" href="#">Edit</a>
+                                    <a href="#">Delete</a>
+                                </div>
+                            </li>
+                        </div>
                     {% endfor %}
                 </ol>
             </div>
