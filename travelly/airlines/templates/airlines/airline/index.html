@@ -20,6 +20,9 @@
         {% if airlines %}
             <div class="card-columns">
                 <!-- display airlines -->
+                {% for airline in airlines %}
+                    {% include 'partials/airline-card.html' %}
+                {% endfor %}
             </div>
         {% else %}
         <!-- notify user why the page is empty -->

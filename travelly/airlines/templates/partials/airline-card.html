@@ -1,0 +1,26 @@
+{% load static %}
+<div class="card border-info mb-3">
+  <div class="card-header ">
+      <h3>{{ airline.name }}</h3>
+  </div>
+  <img src="{{ airline.logo.url }}" alt="" class="card-img-top">
+  <div class="card-body border-dark">
+    <p class="card-text text-dark">
+         <ul>
+            <!-- display verification -->
+            {% if airline.verified %}
+                <li class="text-success">Verified!</li>
+            {% else %}
+                <li class="text-danger">Not Verified</li>
+            {% endif %}
+         </ul>
+    </p>
+      <hr>
+      <div class="text-right">
+          <a href="#" title="See More">See More</a>
+      </div>
+  </div>
+  <div class="card-footer">
+
+  </div>
+</div>
