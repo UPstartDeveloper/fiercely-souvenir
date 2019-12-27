@@ -23,7 +23,7 @@ class Airline(models.Model):
 
     def get_absolute_url(self):
         '''Returns a fully qualified path for a page (i.e. /delta-airlines).'''
-        path_components = {'pk': self.pk}
+        path_components = {'slug': self.slug}
         return reverse('airlines:airline-detail', kwargs=path_components)
 
     def save(self, *args, **kwargs):
@@ -37,6 +37,8 @@ class Airline(models.Model):
 
 class Review(models.Model):
     '''Feedback a User has about their experience with a certain airline.'''
+    title = models.CharField(max_length=200, help_text="Headline for review.",
+                             unique=True)
     author = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
                                   on_delete=models.SET_NULL)
     airline = models.ForeignKey(Airline, on_delete=models.CASCADE)
@@ -57,5 +59,10 @@ class Review(models.Model):
         "What was your experience like? All feedback is encouraged!"))
 
     def __str__(self):
-        '''Return the title of the Airline for presentation purposes.'''
+        '''Return the title of the Review for presentation purposes.'''
         return f"{self.airline} Review {self.id}"
+
+    def get_absolute_url(self):
+        '''Returns a fully qualified path for related AirlineDetail page.'''
+        path_components = {'slug': self.airline.slug}
+        return reverse('airlines:airline-detail', kwargs=path_components)

@@ -18,8 +18,9 @@
     <div class="container">
         <!-- Fields of Airlines -->
         <div class="media">
-            <img class="mr-3" src="{{ airline.logo.url }}" alt="Airline logo">
+            <img class="mr-3" src="{{ airline.logo.url }}" alt="Airline logo" width=250px height=250px>
             <div class="media-body">
+                <h2>{{ airline.title }}</h2>
                 <h1 class="mt-0">{{ airline.name }}</h1>
                 <!-- display verification -->
                 {% if airline.verified %}
@@ -28,15 +29,20 @@
                     <p class="text-danger">Not Verified </p>
                 {% endif %}
                 <!-- List of reviews -->
-                <div class="media mt-3">
-                    <a class="pr-3" href="#">
-                        <img src="..." alt="Generic placeholder image">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="mt-0">Media heading</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                <h3>Reviews By Passengers:</h3>
+                <ol>
+                    {#{% for review in reviews %}#}
+                    <div class="media mt-3">
+                        <li>
+                            <p class=pr-3>{{ review.author.first_name }} Says:</p>
+                            <div class="media-body">
+                                <h5 class="mt-0">Media heading</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </li>
                     </div>
-                </div>
+                    {#{% endfor %}#}
+                </ol>
             </div>
         </div>
     </div>
