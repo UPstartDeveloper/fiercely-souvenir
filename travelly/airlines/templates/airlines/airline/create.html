@@ -1,0 +1,22 @@
+<!-- airlines/templates/airlines/airline/create.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/airline-nav.html' %}
+    {% endif %}
+{% endblock %}
+
+<!-- FORM CONTENT -->
+{% block content %}
+<div class="container">
+    <h2>Got an Airline to Share?</h2>
+    <h3>Tell Us About It!</h3>
+    {% include 'form_template.html' %}
+        <h5><a href="{% url 'airlines:all-airlines' %}">Back to All Airlines</a></h5>
+</div>
+
+{% endblock %}

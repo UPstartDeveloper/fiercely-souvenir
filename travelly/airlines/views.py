@@ -67,4 +67,5 @@ class AirlineCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         '''Initializes author and image (if there is one) of new Note.'''
         form.instance.logo = self.request.FILES.get('logo')
+        form.instance.verified = False
         return super().form_valid(form)
