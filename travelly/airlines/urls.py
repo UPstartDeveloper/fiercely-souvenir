@@ -1,9 +1,9 @@
 from django.urls import path
 from airlines.views import (
-    show_airlines,
+    AirlineList,
 )
 
 app_name = 'airlines'
 urlpatterns = [
-    path('all/', show_airlines, name="all-airlines"),
+    path('all/', AirlineList.as_view(), name="all-airlines"),
 ]

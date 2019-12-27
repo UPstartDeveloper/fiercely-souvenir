@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class Airline(models.Model):
@@ -18,9 +19,9 @@ class Airline(models.Model):
 
 class Review(models.Model):
     '''Feedback a User has about their experience with a certain airline.'''
-    author = = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                    on_delete=models.SET_NULL)
-    airline = models.ForeignKey(Airline, on_delete=models.DELETE)
+    author = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
+                                  on_delete=models.SET_NULL)
+    airline = models.ForeignKey(Airline, on_delete=models.CASCADE)
     RATING_CHOICES = [
         (1, 'One Star'),
         (2, 'Two Stars'),
@@ -32,7 +33,7 @@ class Review(models.Model):
         "On a scale from 1-5, with 1 meaning 'terrible' and 5 meaning " +
         "'exceptional', how would you rate your experience with this airline?"
     ))
-    price = models.DecimalField(decimal_places=2,
+    price = models.DecimalField(max_digits=9, decimal_places=2,
                                 help_text="How much did you pay this airline?")
     comments = models.TextField(help_text=(
         "What was your experience like? All feedback is encouraged!"))
