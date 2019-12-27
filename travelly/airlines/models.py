@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.utils.text import slugify
 
 
 class Airline(models.Model):
     '''Represents a company that Users fly with.'''
-    name = models.CharField(max_length=200, help_text="Name of this airline.",
-                            unique=True)
+    title = models.CharField(max_length=200, help_text="Name of this airline.",
+                             unique=True)
     slug = models.CharField(max_length=200,
                             blank=True, editable=False,
                             help_text="Unique URL path to access this airline."
@@ -15,6 +16,23 @@ class Airline(models.Model):
                              default='images/air-transport.png',
                              help_text="Brand image of the airline.")
     verified = models.BooleanField(help_text="Staff-checked for credibility.")
+
+    def __str__(self):
+        '''Return the title of the Airline for presentation purposes.'''
+        return self.title
+
+    def get_absolute_url(self):
+        '''Returns a fully qualified path for a page (i.e. /delta-airlines).'''
+        path_components = {'pk': self.pk}
+        return reverse('airlines:airline-detail', kwargs=path_components)
+
+    def save(self, *args, **kwargs):
+        '''Makes a URL safe slug automatically when a new instance is saved.'''
+        if not self.pk:
+            self.slug = slugify(self.title, allow_unicode=True)
+
+        # call save on the superclass
+        return super(Airline, self).save(*args, **kwargs)
 
 
 class Review(models.Model):
@@ -37,3 +55,7 @@ class Review(models.Model):
                                 help_text="How much did you pay this airline?")
     comments = models.TextField(help_text=(
         "What was your experience like? All feedback is encouraged!"))
+
+    def __str__(self):
+        '''Return the title of the Airline for presentation purposes.'''
+        return f"{self.airline} Review {self.id}"

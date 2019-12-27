@@ -1,7 +1,7 @@
 {% load static %}
 <div class="card border-info mb-3">
   <div class="card-header ">
-      <h3>{{ airline.name }}</h3>
+      <h3>{{ airline.title }}</h3>
   </div>
   <img src="{{ airline.logo.url }}" alt="" class="card-img-top">
   <div class="card-body border-dark">
@@ -18,7 +18,7 @@
   </div>
   <div class="card-footer">
       <div class="text-right">
-          <a href="#" title="See More">See More</a>
+          <a href="{% url 'airlines:airline-detail' airline.slug %}" title="See More">See More</a>
       </div>
   </div>
 </div>
