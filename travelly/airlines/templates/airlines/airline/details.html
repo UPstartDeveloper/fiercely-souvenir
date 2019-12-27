@@ -28,13 +28,15 @@
                 {% else %}
                     <p class="text-danger">Not Verified </p>
                 {% endif %}
-                <!-- Link to Airline update and delete views -->
+                <!-- Link to Airline list, update, and delete views -->
                 <a class="mr-3" href="{% url 'airlines:update_airline' airline.slug %}">Edit Airline</a>
+                <br>
+                <a href="{% url 'airlines:all-airlines' %}">Back to All Airlines</a>
                 <br><br>
                 <!-- List of reviews -->
                 <h3>Reviews By Passengers:</h3>
                 <!-- Links to Add Reviews Goes here-->
-                <a href="#">Add a Review</a>
+                <a href="{% url 'airlines:create_review' %}">Add a Review</a>
                 <ol>
                     {% for review in reviews %}
                         <div class="media mt-3">

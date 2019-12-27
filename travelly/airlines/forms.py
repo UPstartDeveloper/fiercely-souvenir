@@ -7,3 +7,16 @@ class AirlineForm(forms.ModelForm):
     class Meta:
         model = Airline
         fields = ['title', 'logo']
+
+
+class ReviewForm(forms.ModelForm):
+    '''Form class based on the Review model.'''
+    class Meta:
+        model = Review
+        fields = [
+            'airline',
+            'headline',
+            'rating',
+            'comments',
+            'price'
+        ]

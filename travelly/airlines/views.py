@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from airlines.models import Airline, Review
 from django.contrib.auth.models import User
-from airlines.forms import AirlineForm
+from airlines.forms import AirlineForm, ReviewForm
 
 
 class AirlineList(ListView):
@@ -83,3 +83,11 @@ class AirlineUpdate(UpdateView):
         if upload is not None:
             form.instance.logo = upload
         return super().form_valid(form)
+
+
+class ReviewCreate(LoginRequiredMixin, CreateView):
+    '''Submit a form to create a new review of an airline.'''
+    model = Review
+    form_class = ReviewForm
+    template_name = 'airlines/review/create.html'
+    login_url = 'accounts:login'
