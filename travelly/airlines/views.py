@@ -91,3 +91,8 @@ class ReviewCreate(LoginRequiredMixin, CreateView):
     form_class = ReviewForm
     template_name = 'airlines/review/create.html'
     login_url = 'accounts:login'
+
+    def form_valid(self, form):
+        '''Initialize the author of the new Review instance.'''
+        form.instance.author = self.request.user
+        return super.form_valid(form)
