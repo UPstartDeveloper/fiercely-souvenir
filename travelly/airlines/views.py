@@ -95,10 +95,14 @@ class ReviewCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         '''Initialize the author of the new Review instance.'''
         form.instance.author = self.request.user
-        return super.form_valid(form)
+        return super().form_valid(form)
 
 
 class ReviewUpdate(UserPassesTestMixin, UpdateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'airlines/review/edit.html'
+
     def test_func(self):
         '''Ensures that Reviews can only be edited by who posted them.'''
         review = self.get_object()
