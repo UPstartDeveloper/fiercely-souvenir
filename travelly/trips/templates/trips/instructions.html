@@ -15,7 +15,15 @@
 {% block content %}
 
 <div class="container">
-    <h2>{{ trip.title }}</h2>
+    <div class="row">
+        <h2>{{ trip.title }}</h2>
+        <div class="ml-auto">
+            <div class="row">
+                <p class="text-muted">Posted by: {{ trip.passenger }}</p>
+                <img src="{{ trip.passenger.profile.mugshot.url }}" alt="" width=30px height=30px>
+            </div>
+        </div>
+    </div>
     <!-- format instructions for this trip -->
     <p>
         1. Arrive at SFO International. <br>
@@ -39,10 +47,10 @@
         will be able to get off the plane. Congratulations on making the trip! <br><br>
     </p>
 
-     <p class="text-muted">Posted by {{ trip.passenger }} on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p><br>
-     <h5><a href="{% url 'trips:change-trip' trip.pk %}">Edit This Trip</a></h5>
-     <h5><a href="{% url 'trips:delete-trip' trip.pk %}">Delete Trip</a></h5>
-     <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
+    <p class="text-muted">Posted on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p>
+    <h5><a href="{% url 'trips:change-trip' trip.pk %}">Edit This Trip</a></h5>
+    <h5><a href="{% url 'trips:delete-trip' trip.pk %}">Delete Trip</a></h5>
+    <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
 </div>
 
 {% endblock %}
