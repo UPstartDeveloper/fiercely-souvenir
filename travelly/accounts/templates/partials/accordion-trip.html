@@ -1,0 +1,13 @@
+<!-- accounts/templates/partials/accordion-trip.html -->
+<div class="card">
+    <div class="card-header" id="heading{{ trip.id }}">
+        <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ trip.id }}" aria-expanded="true" aria-controls="collapse{{ trip.id }}">
+                {{ trip.title }}
+            </button>
+        </h2>
+    </div>
+    <div id="collapse{{ trip.id }}" class="collapse" aria-labelledby="heading{{ trip.id }}" data-parent="#accordionReviews">
+        {% include 'partials/trip-card.html' %}
+    </div>
+</div>

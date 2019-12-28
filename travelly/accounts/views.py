@@ -11,6 +11,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.auth import views as auth_views
+from trips.models import Trip
+from airlines.models import Review
 
 
 def launch_page(request):
@@ -46,13 +48,18 @@ class ProfileDetail(UserPassesTestMixin, DetailView):
            request(HttpRequest): the HTTP request sent to the server
 
            Returns:
-           render: a page of the Profile information
+           render: a page of the Profile information, and the User's related
+                   Trips and Reviews
 
         """
         user = self.queryset.get(id=pk)
         profile = user.profile
+        trips = Trip.objects.filter(passenger=user)
+        reviews = Review.objects.filter(author=user)
         context = {
-            'profile': profile
+            'profile': profile,
+            'trips': trips,
+            'reviews': reviews,
         }
         return render(request, self.template_name, context)
 

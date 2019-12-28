@@ -1,0 +1,25 @@
+<!-- accounts/templates/partials/accordion-review.html -->
+<div class="card">
+    <div class="card-header" id="heading{{ review.id }}">
+        <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ review.id }}" aria-expanded="true" aria-controls="collapse{{ review.id }}">
+                {{ review.headline }}
+            </button>
+        </h2>
+    </div>
+    <div id="collapse{{ review.id }}" class="collapse" aria-labelledby="heading{{ review.id }}" data-parent="#accordionReviews">
+        <div class="card-body">
+            <p class=pr-3><i>{{ review.author.first_name }} Says:</i></p>
+            <div class="media-body">
+                <h5 class="mt-0">{{ review.headline }}</h5>
+                Rating: {{ review.rating }} out of 5! <br>
+                Cost: ${{ review.price }} <br>
+                {{ review.comments }}
+                <br>
+                <!-- Link to Update/Delete a Review -->
+                <a class="mr-3" href="{% url 'airlines:edit_review' review.id %}">Edit</a>
+                <a href="{% url 'airlines:delete_review' review.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

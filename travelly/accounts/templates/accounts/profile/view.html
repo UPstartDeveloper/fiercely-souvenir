@@ -64,4 +64,25 @@
         </div>
     </div>
 </div>
+<!-- display related Trips -->
+<hr>
+<div class="container">
+    <h2>Your Trips:</h2>
+    <div class="accordion" id="accordionTrips">
+        {% for trip in trips %}
+            {% include 'partials/accordion-trip.html' %}
+        {% endfor %}
+    </div>
+</div>
+<!-- display related Reviews -->
+<hr>
+<div class="container">
+    <h2>Your Reviews:</h2>
+    <div class="accordion" id="accordionReviews">
+        {% for review in reviews %}
+            {% include 'partials/accordion-review.html' %}
+        {% endfor %}
+    </div>
+</div>
+<hr>
 {% endblock %}
