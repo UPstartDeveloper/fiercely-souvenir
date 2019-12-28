@@ -1,0 +1,16 @@
+<!-- airlines/templates/partials/review-media.html -->
+<div class="media mt-3">
+    <li>
+        <p class=pr-3><i>{{ review.author.first_name }} Says:</i></p>
+        <div class="media-body">
+            <h5 class="mt-0">{{ review.headline }}</h5>
+            Rating: {{ review.rating }} out of 5! <br>
+            Cost: ${{ review.price }} <br>
+            {{ review.comments }}
+            <br>
+            <!-- Link to Update/Delete a Review -->
+            <a class="mr-3" href="{% url 'airlines:edit_review' review.id %}">Edit</a>
+            <a href="{% url 'airlines:delete_review' review.id %}">Delete</a>
+        </div>
+    </li>
+</div>
