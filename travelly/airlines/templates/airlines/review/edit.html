@@ -1,1 +1,22 @@
-<!-- airlines/templates/airlines/review/delete.html -->
+<!-- airlines/templates/airlines/review/edit.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/airline-nav.html' %}
+    {% endif %}
+{% endblock %}
+
+<!-- FORM CONTENT -->
+{% block content %}
+<div class="container">
+    <h2>Edit Your Review</h2>
+    <h3>Please Fill Out the Form Below</h3>
+    {% include 'form_template.html' %}
+        <h5><a href="{% url 'airlines:all-airlines' %}">Back to All Airlines</a></h5>
+</div>
+
+{% endblock %}
