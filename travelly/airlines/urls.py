@@ -5,6 +5,8 @@ from airlines.views import (
     AirlineCreate,
     AirlineUpdate,
     ReviewCreate,
+    ReviewUpdate,
+    ReviewDelete
 )
 
 app_name = 'airlines'
@@ -18,4 +20,7 @@ urlpatterns = [
          name="update_airline"),
     # Review views
     path('add-review/', ReviewCreate.as_view(), name='create_review'),
+    path('review/<int:pk>/edit/', ReviewUpdate.as_view(), name='edit_review'),
+    path('review/<int:pk>/delete/', ReviewDelete.as_view(),
+         name='delete_review'),
 ]

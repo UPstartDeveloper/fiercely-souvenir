@@ -96,3 +96,11 @@ class ReviewCreate(LoginRequiredMixin, CreateView):
         '''Initialize the author of the new Review instance.'''
         form.instance.author = self.request.user
         return super.form_valid(form)
+
+
+class ReviewUpdate(UserPassesTestMixin, UpdateView):
+    pass
+
+
+class ReviewDelete(UserPassesTestMixin, DeleteView):
+    pass

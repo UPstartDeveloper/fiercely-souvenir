@@ -50,8 +50,8 @@
                                     {{ review.comments }}
                                     <br>
                                     <!-- Link to Update/Delete a Review -->
-                                    <a class="mr-3" href="#">Edit</a>
-                                    <a href="#">Delete</a>
+                                    <a class="mr-3" href="{% url 'airlines:edit_review' review.id %}">Edit</a>
+                                    <a href="{% url 'airlines:delete_review' review.id %}">Delete</a>
                                 </div>
                             </li>
                         </div>
