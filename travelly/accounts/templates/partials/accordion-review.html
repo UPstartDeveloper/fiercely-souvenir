@@ -9,7 +9,10 @@
     </div>
     <div id="collapse{{ review.id }}" class="collapse" aria-labelledby="heading{{ review.id }}" data-parent="#accordionReviews">
         <div class="card-body">
-            <p class=pr-3><i>{{ review.author.first_name }} Says:</i></p>
+            <div class="row">
+                <img class="mr-2" src="{{ review.author.profile.mugshot.url }}" alt="" width=30px height=30px>
+                <p class=pr-3><i>{{ review.author.username }} Says:</i></p>
+            </div>
             <div class="media-body">
                 <h5 class="mt-0">{{ review.headline }}</h5>
                 Rating: {{ review.rating }} out of 5! <br>
