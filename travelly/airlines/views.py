@@ -11,6 +11,7 @@ from django.http import HttpResponseRedirect
 from airlines.models import Airline, Review
 from django.contrib.auth.models import User
 from airlines.forms import AirlineForm, ReviewForm
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class AirlineList(ListView):
@@ -109,7 +110,19 @@ class ReviewUpdate(UserPassesTestMixin, UpdateView):
         return (self.request.user == review.author)
 
 
-class ReviewDelete(UserPassesTestMixin, DeleteView):
+class ReviewDelete(UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    model = Review
+    template_name = 'airlines/review/delete.html'
+    success_url = reverse_lazy('airlines:all-airlines')
+    success_message = "Your review has been deleted."
+    queryset = Review.objects.all()
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.calculated_field,
+        )
+
     def test_func(self):
         '''Ensure Reviews can only be deleted by the user who posted them.'''
         review = self.get_object()

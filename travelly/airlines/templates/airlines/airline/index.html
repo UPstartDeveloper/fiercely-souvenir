@@ -17,7 +17,15 @@
 
     <div class="container">
         <h1>Trendy Airlines</h1>
-
+        <!-- Notify User if they have just successfully deleted a review -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }} alert alert-success"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- Display All Airlines -->
         {% if airlines %}
             <div class="card-columns">
                 <!-- display airlines -->
