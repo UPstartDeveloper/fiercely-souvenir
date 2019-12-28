@@ -41,8 +41,8 @@ class Review(models.Model):
     headline = models.CharField(max_length=200,
                                 help_text="Headline for review.",
                                 unique=False)
-    author = models.OneToOneField(User, null=True,
-                                  on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, null=True,
+                               on_delete=models.SET_NULL)
     airline = models.ForeignKey(Airline, on_delete=models.CASCADE)
     RATING_CHOICES = [
         (1, 'One Star'),
