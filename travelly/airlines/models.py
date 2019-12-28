@@ -40,7 +40,7 @@ class Review(models.Model):
     '''Feedback a User has about their experience with a certain airline.'''
     headline = models.CharField(max_length=200,
                                 help_text="Headline for review.",
-                                unique=True)
+                                unique=False)
     author = models.OneToOneField(User, null=True,
                                   on_delete=models.SET_NULL)
     airline = models.ForeignKey(Airline, on_delete=models.CASCADE)
