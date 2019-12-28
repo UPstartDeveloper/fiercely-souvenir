@@ -15,8 +15,18 @@
 <div class="container">
     <h2>Delete Your Review</h2>
     <h3>But don't stop travelling 🤗!</h3>
-    {% include 'form_template.html' %}
-        <h5><a href="{% url 'airlines:all-airlines' %}">Back to All Airlines</a></h5>
+    <br>
+    <h4>This is What You Are Deleting:</h4>
+    <!-- Preview the Review being deleted -->
+    {% include "partials/review-media.html" %}
+    <br>
+    <h5>This action <strong>cannot</strong> be undone. <br>Are you sure you would like to continue?</h5>
+    <div class="row">
+        <div class="offset-md-9">
+            {% include 'form_template.html' %}
+        </div>
+    </div>
+    <h6><a href="{% url 'airlines:all-airlines' %}">Back to All Airlines</a></h6>
 </div>
 
 {% endblock %}

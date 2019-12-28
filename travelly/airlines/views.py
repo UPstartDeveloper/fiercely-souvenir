@@ -117,6 +117,23 @@ class ReviewDelete(UserPassesTestMixin, DeleteView):
     success_message = "Your review has been deleted."
     queryset = Review.objects.all()
 
+    def get(self, request, pk):
+        """Renders a page to show the Review, and a button to delete it.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug field value of the Review instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        review = self.get_queryset().get(pk=pk)
+        context = {
+            'review': review
+        }
+        return render(request, self.template_name, context)
+
     def delete(self, request, *args, **kwargs):
         '''Delete the Review instance, and message the user about it.'''
         messages.success(request, self.success_message)
