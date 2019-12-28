@@ -16,7 +16,7 @@
 {% block content %}
 
     <div class="container">
-        <h1>Trendy Airlines</h1>
+        <h1>Trendy Airlines {% if airlines %}<small class="text-muted">({{ airlines|length }} Airline{{ pages|length|pluralize:"s" }})</small>{% endif %}</h1>
         <!-- Notify User if they have just successfully deleted a review -->
         {% if messages %}
             <div class="messages">
