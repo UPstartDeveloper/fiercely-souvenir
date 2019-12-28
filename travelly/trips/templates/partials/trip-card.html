@@ -14,7 +14,8 @@
           <a href="{% url 'trips:trip-detail' trip.pk %}" title="See More">See More</a>
       </div>
   </div>
-  <div class="card-footer">
+  <div class="card-footer row">
   <small class="text-muted">Created:{{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</small>
+  <img class="ml-auto" src="{{ trip.passenger.profile.mugshot.url }}" alt="" width=30px height=30px>
   </div>
 </div>
