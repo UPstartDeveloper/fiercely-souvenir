@@ -99,8 +99,14 @@ class ReviewCreate(LoginRequiredMixin, CreateView):
 
 
 class ReviewUpdate(UserPassesTestMixin, UpdateView):
-    pass
+    def test_func(self):
+        '''Ensures that Reviews can only be edited by who posted them.'''
+        review = self.get_object()
+        return (self.request.user == review.author)
 
 
 class ReviewDelete(UserPassesTestMixin, DeleteView):
-    pass
+    def test_func(self):
+        '''Ensure Reviews can only be deleted by the user who posted them.'''
+        review = self.get_object()
+        return (self.request.user == review.author)
