@@ -37,6 +37,7 @@
                 <h3>Reviews By Passengers:</h3>
                 <!-- Links to Add Reviews Goes here-->
                 <a href="{% url 'airlines:create_review' %}">Add a Review</a>
+                {% if reviews %}
                 <ol>
                     {% for review in reviews %}
                         <div class="media mt-3">
@@ -56,6 +57,9 @@
                         </div>
                     {% endfor %}
                 </ol>
+                {% else %}
+                    <div class="alert alert-primary" role="alert">There are currently no reviews for this airline.</div>
+                {% endif %}
             </div>
         </div>
     </div>
