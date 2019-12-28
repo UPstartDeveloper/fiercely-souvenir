@@ -56,7 +56,11 @@ class Review(models.Model):
         "'exceptional', how would you rate your experience with this airline?"
     ))
     price = models.DecimalField(max_digits=9, decimal_places=2,
-                                help_text="How much did you pay this airline?")
+                                help_text=(
+                                    "How much did you pay this airline? " +
+                                    "Please leave out currency symbols " +
+                                    "(i.e. $)."
+                                ))
     comments = models.TextField(help_text=(
         "What was your experience like? All feedback is encouraged!"))
 
