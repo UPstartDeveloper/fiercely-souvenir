@@ -20,28 +20,78 @@
         <h1 class="display-3">The Rewards of Travelling</h1>
         <p class="lead">Without the confusion.</p>
         <hr class="my-4">
-        <p>Travelly is a one stop for ending all your travel worries!</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{% url 'accounts:login' %}" role="button">Log In</a>
-        </p>
-
+        <br>
         <!-- FEATURES -->
         <div class="container mb-0">
             <div class="row">
-                <div class="col-md-4">Get Through the Airport</div>
-                <div class="col-md-4">Review Airlines for Quality</div>
-                <div class="col-md-4">Share Trips with Pictures</div>
+                <h1>Why Use Travelly?</h1>
             </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/vacation.jpg' %}" height=255px>
+                        <div class="card-body">
+                            <h4 class="card-title">Afraid to Take the Leap?</h4>
+                            <p class="card-text">For newcomers, flying can be a disorienting experience. <br> Let us help you find your way through the airport, to your dream destination!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/airline.jpg' %}" width=270px height=255px>
+                        <div class="card-body">
+                            <h4 class="card-title">Can't Decide the Airline?</h4>
+                            <p class="card-text">
+                                Read community reviews on all the major airlines, so you know what to expect up in the skies. <br>
+                                Nothing beats making tough decisions like having a strong community!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/picturesque.jpg' %}" height=255px>
+                        <div class="card-body">
+                            <h4 class="card-title">Have Cool Travel Pics?</h4>
+                            <p class="card-text">Use our "Stories" section to share your travels, and be inspired by other tourists' adventures!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
 
             <!-- Link to Sign Up Form -->
-            <div class="text-center mb-0">
-                <a href="{% url 'accounts:new-user' %}" class="btn btn-primary ml-2">New to Travelly?</a>
-                <br><br><br>
-                <small>Airplane image on this page by Ross Parmly on Unsplash</small>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center mb-0">
+                        <a href="{% url 'accounts:new-user' %}" class="btn-lg btn-primary ml-2">Get Started</a>
+                        <br><br><br>
+                        <div class="row">
+                            <small>
+                                <ul>
+                                    Photo Creds:
+                                    <li>
+                                        Background image: by Ross Parmly on Unsplash
+                                    </li>
+                                    <li>
+                                        Vacation Image: by Alexandre Chambon on Unsplash
+                                    </li>
+                                    <li>
+                                        Airplane Interior: by JC Gellidon on Unsplash
+                                    </li>
+                                    <li>
+                                        View Outside Airplane Window Image: by Leio McLaren on Unsplash
+                                    </li>
+                                </ul>
+                            </small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
+
 
 
 {% endblock %}
