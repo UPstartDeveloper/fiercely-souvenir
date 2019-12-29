@@ -1,4 +1,8 @@
 from django.test import TestCase
+from django.test.client import RequestFactory
+from django.contrib.auth.models import User
+from trips.models import Trip
+from django.urls import reverse, reverse_lazy
 
 
 class TripsTestCase(TestCase):
@@ -14,7 +18,15 @@ class TripsTestCase(TestCase):
 
 class TripCreateTests(TestCase):
     '''Tests for the TripCreate view.'''
-    pass
+    def setUp(self):
+        """Instantiate RequestFactory and User objects to pass POST requests
+           to the TripCreate view.
+
+        """
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
 
 
 class TripDetailTests(TestCase):
@@ -24,9 +36,25 @@ class TripDetailTests(TestCase):
 
 class TripUpdateTests(TestCase):
     '''Tests for the TripUpdate view.'''
-    pass
+    def setUp(self):
+        """Instantiate RequestFactory and User objects to pass POST requests
+           to the TripUpdate view.
+
+        """
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
 
 
 class TripDeleteTests(TestCase):
     '''Tests for the TripDelete view.'''
-    pass
+    def setUp(self):
+        """Instantiate RequestFactory and User objects to pass POST requests
+           to the TripDelete view.
+
+        """
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
