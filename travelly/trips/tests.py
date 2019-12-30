@@ -60,7 +60,12 @@ class TripCreateTests(TestCase):
 
     def test_get_create_form(self):
         '''The site has a form a user can see to make new Trip instances.'''
-        pass
+        # use makes a request to GET the create form
+        get_request = self.factory.get('trips:create-trip')
+        response = TripCreate.as_view()(get_request)
+        # the page renders with the correct content on the template
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Going Somewhere?')
 
     def test_insert_one_trip_in_db(self):
         '''A Trip instance created by a User goes in the database.'''
