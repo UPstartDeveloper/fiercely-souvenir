@@ -195,7 +195,8 @@ class TripUpdateTests(TestCase):
         # the user making this request passes the UserPassesTestMixin of view
         self.assertTrue(True, self.pass_test_func(self.user))
         post_request.user = self.user
-        response = TripUpdate.as_view()(post_request, form_data, pk=self.trip.id)
+        response = TripUpdate.as_view()(post_request, form_data,
+                                        pk=self.trip.id)
         # the user is then redirected
         self.assertEqual(response.status_code, 302)
         # the Trip fields have been chnaged to match the user data
@@ -210,7 +211,7 @@ class TripDeleteTests(TestCase):
            to the TripDelete view.
 
            Parameters:
-           self(TripDeleteTests): the calling object
+           self(TripUpdateTests): the calling object
 
            Returns:
            None
@@ -220,3 +221,21 @@ class TripDeleteTests(TestCase):
         self.user = User.objects.create(username='Abdullah',
                                         email='abd@gmail.com',
                                         password="Abdullah's passwd")
+        self.trip = Trip.objects.create(title="Summer Break",
+                                        passenger=self.user, arrive_at="BOS",
+                                        terminal='G')
+        self.url = 'trips/4/change-details/'
+
+    def pass_test_func(self, user):
+        """Check to make sure the request meets the requirements of the
+           UserPassesTestMixin that TripDelete inherits from.
+
+           Parameters:
+           user(User): the client making the request
+
+           Returns
+           bool: True or False, depending on whether the client is the Trip
+                 passenger
+
+        """
+        return self.trip.passenger == user
