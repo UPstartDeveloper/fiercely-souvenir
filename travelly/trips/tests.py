@@ -149,6 +149,29 @@ class TripUpdateTests(TestCase):
         self.user = User.objects.create(username='Abdullah',
                                         email='abd@gmail.com',
                                         password="Abdullah's passwd")
+        self.trip = Trip.objects.create(title="Summer Break",
+                                        passenger=self.user, arrive_at="BOS",
+                                        terminal='G')
+
+    def test_changing_trip_fields(self):
+        """A user is able to change the title, arrive_at, or terminal fields
+            of a pre-exisiting Trip.
+
+        """
+        # there is already a Trip in the db
+        old_trip = Trip.objects.get(title=self.trip.title)
+        self.assertTrue(old_trip, not None)
+        # the user is able to GET the update from
+        self.assertEqual(self.trip.id, 4)
+        get_request = self.factory.get('trips/4/change-details/')
+        # the user making this request passes the UserPassesTestMixin of view
+        get_request.user = self.user
+        self.assertEqual(self.user, get_request.user)
+        response = TripUpdate.as_view()(get_request, pk=self.trip.id)
+        self.assertEqual(response.status_code, 200)
+        # the user can then POST changes to the database
+        # the user is then redirected
+        # the Trip fields have been chnaged to match the user data
 
 
 class TripDeleteTests(TestCase):
