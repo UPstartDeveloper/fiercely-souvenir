@@ -152,6 +152,21 @@ class TripUpdateTests(TestCase):
         self.trip = Trip.objects.create(title="Summer Break",
                                         passenger=self.user, arrive_at="BOS",
                                         terminal='G')
+        self.url = 'trips/4/change-details/'
+
+    def pass_test_func(self, user):
+        """Check to make sure the request meets the requirements of the
+           UserPassesTestMixin that TripUpdate inherits from.
+
+           Parameters:
+           user(User): the client making the request
+
+           Returns
+           bool: True or False, depending on whether the client is the Trip
+                 passenger
+
+        """
+        return self.trip.passenger == user
 
     def test_changing_trip_fields(self):
         """A user is able to change the title, arrive_at, or terminal fields
@@ -163,15 +178,29 @@ class TripUpdateTests(TestCase):
         self.assertTrue(old_trip, not None)
         # the user is able to GET the update from
         self.assertEqual(self.trip.id, 4)
-        get_request = self.factory.get('trips/4/change-details/')
+        get_request = self.factory.get(self.url)
         # the user making this request passes the UserPassesTestMixin of view
+        self.assertTrue(True, self.pass_test_func(self.user))
         get_request.user = self.user
-        self.assertEqual(self.user, get_request.user)
         response = TripUpdate.as_view()(get_request, pk=self.trip.id)
         self.assertEqual(response.status_code, 200)
         # the user can then POST changes to the database
+        new_title = 'End of School-Year Journeys'
+        form_data = {
+            'title': new_title,
+            'arrive_at': 'OAK',
+            'terminal': 'A'
+        }
+        post_request = self.factory.post(self.url, form_data)
+        # the user making this request passes the UserPassesTestMixin of view
+        self.assertTrue(True, self.pass_test_func(self.user))
+        post_request.user = self.user
+        response = TripUpdate.as_view()(post_request, form_data, pk=self.trip.id)
         # the user is then redirected
+        self.assertEqual(response.status_code, 302)
         # the Trip fields have been chnaged to match the user data
+        new_trip = Trip.objects.get(title=new_title)
+        self.assertTrue(new_trip, not None)
 
 
 class TripDeleteTests(TestCase):
