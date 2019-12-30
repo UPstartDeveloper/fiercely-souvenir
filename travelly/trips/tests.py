@@ -22,8 +22,8 @@ class TripsTestCase(TestCase):
 class TripListTests(TestCase):
     '''Tests for the TripList view.'''
     def setUp(self):
-        """Instantiate RequestFactory and User objects to pass POST requests
-           to the TripCreate view.
+        """Instantiate RequestFactory, Trip, and User objects to pass requests
+           to the TripList view.
 
         """
         self.factory = RequestFactory()
@@ -88,7 +88,7 @@ class TripCreateTests(TestCase):
 
 class TripDetailTests(TestCase):
     '''Tests for the TripDetail view.'''
-    pass
+
 
 
 class TripUpdateTests(TestCase):
