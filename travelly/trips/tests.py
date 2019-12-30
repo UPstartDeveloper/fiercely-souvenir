@@ -3,7 +3,9 @@ from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from trips.models import Trip
 from django.urls import reverse, reverse_lazy
-import trips.views as trips_views
+from trips.views import (
+    TripList, TripDetail, TripCreate, TripUpdate, TripDelete
+)
 
 
 class TripsTestCase(TestCase):
@@ -37,9 +39,11 @@ class TripListTests(TestCase):
         # add Trip objects to the database
         self.trip.save()
         # make sure that the trip is shown on the TripList view
-        get_request = self.factory.get('trips:all-trips')
-        response = trips_views.TripList.as_view()(get_request)
+        request = self.factory.get('trips:all-trips')
+        response = TripList.as_view()(request)
         self.assertEqual(response.status_code, 200)
+        # ensure that the user sees the content from the specific Trip instance
+        self.assertContains(response, 'Summer Break')
 
 
 class TripCreateTests(TestCase):
