@@ -58,6 +58,14 @@ class TripCreateTests(TestCase):
                                         email='abd@gmail.com',
                                         password="Abdullah's passwd")
 
+    def test_get_create_form(self):
+        '''The site has a form a user can see to make new Trip instances.'''
+        pass
+
+    def test_insert_one_trip_in_db(self):
+        '''A Trip instance created by a User goes in the database.'''
+        pass
+
 
 class TripDetailTests(TestCase):
     '''Tests for the TripDetail view.'''
