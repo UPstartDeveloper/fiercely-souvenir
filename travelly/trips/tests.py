@@ -69,7 +69,21 @@ class TripCreateTests(TestCase):
 
     def test_insert_one_trip_in_db(self):
         '''A Trip instance created by a User goes in the database.'''
-        pass
+        # user passes in data through the TripCreate form
+        form_data = {
+            'title': "Summer Break",
+            'arrive_at': "BOS",
+            'terminal': 'G'
+        }
+        post_request = self.factory.post('trips:create-trip', form_data)
+        post_request.user = self.user  # the user becomes the passenger
+        # the Trip is inserted into the database
+        response = TripCreate.as_view()(post_request)
+        # a new Trip instance exists, with the content the user inputted
+        new_trip = Trip.objects.get(title='Summer Break')
+        self.assertTrue(new_trip, not None)
+        # the user is redirected
+        self.assertEqual(response.status_code, 302)
 
 
 class TripDetailTests(TestCase):
