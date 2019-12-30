@@ -222,7 +222,7 @@ class TripDeleteTests(TestCase):
         self.trip = Trip.objects.create(title="Summer Break",
                                         passenger=self.user, arrive_at="BOS",
                                         terminal='G')
-        self.url = 'trips/4/change-details/'
+        self.url = f'trips/{self.trip.id}/delete-trip/'
 
     def pass_test_func(self, user):
         """Check to make sure the request meets the requirements of the
@@ -243,3 +243,10 @@ class TripDeleteTests(TestCase):
         # a Trip is already in the database
         trip = Trip.objects.get(title=self.trip.title)
         self.assertTrue(trip, not None)
+        # this user is the pre-exisiting Trip's passenger
+        self.assertTrue(self.pass_test_func(self.user))
+        # user makes a request to get the delete form
+        get_request = self.factory.get(self.url)
+        get_request.user = self.user
+        response = TripDelete.as_view()(get_request, pk=trip.id)
+        self.assertEqual(response.status_code, 200)
