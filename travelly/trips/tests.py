@@ -250,3 +250,13 @@ class TripDeleteTests(TestCase):
         get_request.user = self.user
         response = TripDelete.as_view()(get_request, pk=trip.id)
         self.assertEqual(response.status_code, 200)
+        # the user who submits the form is the Trip's passenger
+        self.assertTrue(self.pass_test_func(self.user))
+        # this user submits the form to delete the pre-exisiting Trip
+        post_request = self.factory.post(self.url)
+        post_request.user = self.user
+        # the user is redirected
+        response = TripDelete.as_view()(post_request, pk=trip.id)
+        self.assertEqual(response.status_code, 302)
+        # the old Trip is no longer in the database
+        self.assertTrue(trip, None)
