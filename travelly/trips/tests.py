@@ -25,6 +25,12 @@ class TripListTests(TestCase):
         """Instantiate RequestFactory, Trip, and User objects to pass requests
            to the TripList view.
 
+           Parameters:
+           self(TripListTests): the calling object
+
+           Returns:
+           None
+
         """
         self.factory = RequestFactory()
         self.user = User.objects.create(username='Abdullah',
@@ -51,6 +57,12 @@ class TripCreateTests(TestCase):
     def setUp(self):
         """Instantiate RequestFactory and User objects to pass POST requests
            to the TripCreate view.
+
+           Parameters:
+           self(TripCreateTests): the calling object
+
+           Returns:
+           None
 
         """
         self.factory = RequestFactory()
@@ -92,6 +104,12 @@ class TripDetailTests(TestCase):
         """Instantiate RequestFactory, Trip, and User objects to pass requests
            to the TripDetail view.
 
+           Parameters:
+           self(TripDetailTests): the calling object
+
+           Returns:
+           None
+
         """
         self.factory = RequestFactory()
         self.user = User.objects.create(username='Abdullah',
@@ -120,6 +138,12 @@ class TripUpdateTests(TestCase):
         """Instantiate RequestFactory and User objects to pass POST requests
            to the TripUpdate view.
 
+           Parameters:
+           self(TripUpdateTests): the calling object
+
+           Returns:
+           None
+
         """
         self.factory = RequestFactory()
         self.user = User.objects.create(username='Abdullah',
@@ -132,6 +156,12 @@ class TripDeleteTests(TestCase):
     def setUp(self):
         """Instantiate RequestFactory and User objects to pass POST requests
            to the TripDelete view.
+
+           Parameters:
+           self(TripDeleteTests): the calling object
+
+           Returns:
+           None
 
         """
         self.factory = RequestFactory()
