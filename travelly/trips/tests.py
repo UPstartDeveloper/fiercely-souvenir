@@ -88,7 +88,30 @@ class TripCreateTests(TestCase):
 
 class TripDetailTests(TestCase):
     '''Tests for the TripDetail view.'''
+    def setUp(self):
+        """Instantiate RequestFactory, Trip, and User objects to pass requests
+           to the TripDetail view.
 
+        """
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.trip = Trip.objects.create(title="Summer Break",
+                                        passenger=self.user, arrive_at="BOS",
+                                        terminal='G')
+
+    def test_get_details_for_one_trip(self):
+        '''A user sees instructions for a Trip on its details page.'''
+        # a user makes a request to see the page
+        self.assertEqual(self.trip.id, 2)
+        get_request = self.factory.get('trips/2/')
+        # the page renders ok
+        response = TripDetail.as_view()(get_request, self.trip.id)
+        self.assertEqual(response.status_code, 200)
+        # the page renders the instructions ok
+        instruction = f'your destination at: {self.trip.arrive_at}'
+        self.assertContains(response, instruction)
 
 
 class TripUpdateTests(TestCase):
