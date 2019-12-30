@@ -122,7 +122,6 @@ class TripDetailTests(TestCase):
     def test_get_details_for_one_trip(self):
         '''A user sees instructions for a Trip on its details page.'''
         # a user makes a request to see the page
-        self.assertEqual(self.trip.id, 2)
         get_request = self.factory.get('trips/2/')
         # the page renders ok
         response = TripDetail.as_view()(get_request, self.trip.id)
@@ -177,7 +176,6 @@ class TripUpdateTests(TestCase):
         old_trip = Trip.objects.get(title=self.trip.title)
         self.assertTrue(old_trip, not None)
         # the user is able to GET the update from
-        self.assertEqual(self.trip.id, 4)
         get_request = self.factory.get(self.url)
         # the user making this request passes the UserPassesTestMixin of view
         self.assertTrue(True, self.pass_test_func(self.user))
@@ -239,3 +237,9 @@ class TripDeleteTests(TestCase):
 
         """
         return self.trip.passenger == user
+
+    def test_delete_one_trip(self):
+        '''The user who posted a Trip can then remove it from the database.'''
+        # a Trip is already in the database
+        trip = Trip.objects.get(title=self.trip.title)
+        self.assertTrue(trip, not None)
