@@ -34,7 +34,15 @@ class AirlineAndReviewCreateTests(TestCase):
 
     def test_get_create_airline_form(self):
         '''User requests to see the form to add a new airline.'''
-        pass
+        # user is already logged in, so they pass the LoginRequiredMixin
+        self.assertTrue(self.user.is_authenticated)
+        # user makes a GET request to AirlineCreate view
+        get_request = self.factory.get('airlines:create_airline')
+        get_request.user = self.user
+        # user gets a valid response from the server
+        response = AirlineCreate.as_view()(get_request)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Got an Airline to Share?')
 
     def test_get_create_review_form(self):
         '''User requests to see the form to add a review.'''
