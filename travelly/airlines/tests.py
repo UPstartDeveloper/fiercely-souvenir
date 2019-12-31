@@ -20,7 +20,17 @@ class AirlineAndReviewCreateTests(TestCase):
            needed for testing.
 
         """
-        pass
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.airline = Airline.objects.create(title='United Airlines',
+                                              verified=True)
+        self.review = Review.objects.create(airline=self.airline,
+                                            headline='Great Service!',
+                                            rating=5,
+                                            comments='Highly Recommended!',
+                                            price=697.87)
 
     def test_get_create_airline_form(self):
         '''User requests to see the form to add a new airline.'''
@@ -46,7 +56,17 @@ class AirlineListTests(TestCase):
            needed for testing.
 
         """
-        pass
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.airline = Airline.objects.create(title='United Airlines',
+                                              verified=True)
+        self.review = Review.objects.create(airline=self.airline,
+                                            headline='Great Service!',
+                                            rating=5,
+                                            comments='Highly Recommended!',
+                                            price=697.87)
 
 
 class AirlineAndReviewDetailTests(TestCase):
@@ -56,7 +76,17 @@ class AirlineAndReviewDetailTests(TestCase):
            needed for testing.
 
         """
-        pass
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.airline = Airline.objects.create(title='United Airlines',
+                                              verified=True)
+        self.review = Review.objects.create(airline=self.airline,
+                                            headline='Great Service!',
+                                            rating=5,
+                                            comments='Highly Recommended!',
+                                            price=697.87)
 
     def test_see_airline_after_user_deletion(self):
         """An airline is still visibile after the user who posted it is deleted
@@ -80,7 +110,17 @@ class AirlineAndReviewUpdateTests(TestCase):
            needed for testing.
 
         """
-        pass
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.airline = Airline.objects.create(title='United Airlines',
+                                              verified=True)
+        self.review = Review.objects.create(airline=self.airline,
+                                            headline='Great Service!',
+                                            rating=5,
+                                            comments='Highly Recommended!',
+                                            price=697.87)
 
 
 class ReviewDeleteTests(TestCase):
@@ -90,4 +130,12 @@ class ReviewDeleteTests(TestCase):
            needed for testing.
 
         """
-        pass
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='Abdullah',
+                                        email='abd@gmail.com',
+                                        password="Abdullah's passwd")
+        self.review = Review.objects.create(airline=self.airline,
+                                            headline='Great Service!',
+                                            rating=5,
+                                            comments='Highly Recommended!',
+                                            price=697.87)
