@@ -1,3 +1,11 @@
 from django.test import TestCase
-
-# Create your tests here.
+from airlines.views import (
+    AirlineList,
+    AirlineDetail,
+    AirlineCreate,
+    AirlineUpdate,
+    ReviewCreate,
+    ReviewUpdate,
+    ReviewDelete
+)
+from airlines.models import Airline, Review
