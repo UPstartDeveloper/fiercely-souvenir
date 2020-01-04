@@ -13,7 +13,7 @@ class TripListOrCreate(ListCreateAPIView):
 
     """
     queryset = Trip.objects.all()
-    serializer_class = NoteSerializer
+    serializer_class = TripSerializer
 
 
 class TripReadUpdateOrDelete(RetrieveUpdateDestroyAPIView):
@@ -23,7 +23,7 @@ class TripReadUpdateOrDelete(RetrieveUpdateDestroyAPIView):
 
     """
     queryset = Trip.objects.all()
-    serializer_class = NoteSerializer
+    serializer_class = TripSerializer
 
 
 class AirlineListOrCreate(ListCreateAPIView):
