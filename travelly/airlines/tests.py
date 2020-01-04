@@ -26,11 +26,6 @@ class AirlineAndReviewCreateTests(TestCase):
                                         password="Abdullah's passwd")
         self.airline = Airline.objects.create(title='Summer Break',
                                               verified=True)
-        self.review = Review.objects.create(airline=self.airline,
-                                            headline='Great Service!',
-                                            rating=5,
-                                            comments='Highly Recommended!',
-                                            price=697.87)
         self.airline_url = 'airlines:create_airline'
         self.review_url = 'airlines:create_review'
 
@@ -75,11 +70,35 @@ class AirlineAndReviewCreateTests(TestCase):
         new_airline = Airline.objects.get(title=title_for_airline)
         self.assertTrue(new_airline, not None)
         self.assertEqual(new_airline.verified, False)
+        # user is redirected
+        self.assertEqual(response.status_code, 302)
 
     def test_insert_review(self):
         '''User adds a review for an airline.'''
         # user is already logged in, so they pass the LoginRequiredMixin
         self.assertTrue(self.user.is_authenticated)
+        # an airline already exists in the database
+        airline = Airline.objects.get(title=self.airline.title)
+        self.assertTrue(airline, not None)
+        # user fills out form to create a reivew
+        review_headline = 'Great Service!'
+        form_data = {
+            'airline': airline,
+            'headline': review_headline,
+            'rating': 5,
+            'comments': 'Highly Recommended!',
+            'price': 67.87,
+        }
+        # user submits the form
+        post_request = self.factory.post(self.review_url, form_data)
+        post_request.user = self.user
+        response = ReviewCreate.as_view()(post_request)
+        self.assertEqual(response.status_code, 302)
+        # a new Review instance is in the db
+        # new_review = Review.objects.get(headline=review_headline)
+        # self.assertTrue(new_review, not None)
+        # user is redirected
+        # self.assertEqual(response.status_code, 302)
 
 
 class AirlineListTests(TestCase):
