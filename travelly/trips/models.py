@@ -19,7 +19,9 @@ class Trip(models.Model):
     passenger = models.ForeignKey(User, null=True, on_delete=models.PROTECT,
                                   help_text="The user making this journey.")
     arrive_at = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
-                                 blank=True, editable=True)
+                                 blank=True, editable=True, help_text=(
+                                    "Which airport are you flying to?"
+                                 ))
     SFO_GATES = (
         ('G', 'International Terminal G'),
         ('A', 'International Terminal A'),
