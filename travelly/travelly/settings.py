@@ -27,7 +27,7 @@ FLIGHT_TITLE_MAX_LENGTH = 600
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = [
     'localhost',
