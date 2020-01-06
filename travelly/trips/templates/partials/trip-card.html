@@ -5,8 +5,8 @@
         <ul>
             <!-- fields in note -->
             <li>Posted by: {{ trip.passenger }}</li>
-            <li>Travelling to {{ trip.arrive_at}}</li>
-            <li>Went through Terminal {{ trip.terminal }} @ SFO</li>
+            <li>Travelling with <strong>{{ trip.airline }}</strong></li>
+            <li>Went from <strong>{{ trip.depart_from }}</strong> to <strong>{{ trip.arrive_at }}</strong></li>
         </ul>
     </p>
       <hr>

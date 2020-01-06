@@ -9,5 +9,6 @@ class TripForm(forms.ModelForm):
         fields = [
             'title',
             'arrive_at',
-            'terminal'
+            'depart_from',
+            'airline'
         ]

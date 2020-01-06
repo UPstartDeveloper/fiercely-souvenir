@@ -18,6 +18,13 @@ class Trip(models.Model):
                                       "Computer Generated.")
     passenger = models.ForeignKey(User, null=True, on_delete=models.PROTECT,
                                   help_text="The user making this journey.")
+    airline = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
+                               blank=True, editable=True, help_text=(
+                                      "Which airline are you flying with?"))
+    depart_from = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
+                                   blank=True, editable=True, help_text=(
+                                      "Which airport are you boarding from?"
+                                    ))
     arrive_at = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
                                  blank=True, editable=True, help_text=(
                                     "Which airport are you flying to?"
@@ -30,6 +37,7 @@ class Trip(models.Model):
         ('1C', 'Harvey Milk Terminal 1C'),
         ('3', 'Terminal 3'),
     )
+    '''
     terminal_help_text = (
         "Check " +
         "https://www.flysfo.com/flight-info/airlines-at-sfo to see which " +
@@ -37,6 +45,7 @@ class Trip(models.Model):
     )
     terminal = models.CharField(max_length=2, choices=SFO_GATES,
                                 help_text=terminal_help_text)
+    '''
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")

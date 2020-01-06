@@ -26,7 +26,15 @@
     </div>
     <!-- format instructions for this trip -->
     <p>
-        1. Arrive at SFO International. <br>
+        1. Locate your airport <strong>terminal</strong>. <br>
+        <i>This is the best place for you to enter the airport from!</i><br>
+        Here's how to figure out your airport terminal:
+        <ul>
+            <li>Know your departure airport: <strong>{{ trip.depart_from }}</strong></li>
+            <li>Know your airline: <strong>{{ trip.airline }}</strong></li>
+            <li>Check the information on your <i>airport website,</i> for which <i>terminal</i> to locate your <i>airline</i> in!</li>
+        </ul>
+        2. Arrive at the airport terminal. <br>
         For novice fliers, I recommend arriving at least 3 hours before
         the time your flight is scheduled to start boarding ("Boarding Time").<br><br>
         2. Check-in time! Please locate <strong>your terminal: {{ trip.terminal }}</strong>, so that you <br>
