@@ -13,7 +13,11 @@
 {% block content %}
     <div class="container">
         <h2>Going Somewhere?</h2>
-        <h3>Tell Us About It!</h3>
+        <p> <strong>IMPORTANT:</strong> Currently, this form assumes <i>you are leaving from San Francisco International Airport (SFO).</i><br>
+            If your flight is departing from another airport, then please use that airport's own website instead.<br>
+            We apologize for this inconvenience.
+        </p>
+        <h3>Tell Us About Your Trip!</h3>
         {% include 'form_template.html' %}
             <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>
     </div>
