@@ -15,12 +15,14 @@
     <!-- Link to United Bootswatch Theme, and Custom CSS Styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Preview for Facebook Shares -->
-    <!-- Open Graph Settings for Facebook Shares -->
+    <!-- Open Graph Settings for Facebook Trip Shares -->
         <meta property="og:url"                content="https://travelly-zr.herokuapp.com/trips/" />
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Trip Instructions from Travelly" />
         <meta property="og:description"        content="Flying from {{ trip.depart_from }} to {{ trip.arrive_at }} soon? Check out my travel tips!" />
         <meta property="og:image"              content="https://travelly-files.s3.us-west-1.amazonaws.com/images/Screen%20Shot%202020-01-06%20at%209.21.14%20AM.png" />
+    <!-- Open Graph Settings for Facebook Review Shares -->
+    {% block review-shares %}{% endblock %}
 
 </head>
 <body>

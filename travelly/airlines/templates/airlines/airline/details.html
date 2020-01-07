@@ -11,6 +11,15 @@
     {% endif %}
 {% endblock %}
 
+<!-- OG Settings for Airline Shares -->
+{% block review-shares %}
+<meta property="og:url"                content="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="{{ airline.title }}: Reviews by Users" />
+<meta property="og:description"        content="What Are People Saying About {{ airline.title }}? Check it out on Travelly now!" />
+<meta property="og:image"              content="{{ airline.logo.url }}" />
+<!-- Open Graph Settings for Facebook Review Shares -->
+{% endblock %}
 
 <!-- Main content -->
 {% block content %}
@@ -28,6 +37,15 @@
                 {% else %}
                     <p class="text-danger">Not Verified </p>
                 {% endif %}
+                <!-- Facebook Share button for Airlines -->
+                <div class="fb-like"
+                     data-href="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews"
+                     data-width="30"
+                     data-layout="standard"
+                     data-action="like"
+                     data-size="large"
+                     data-share="true"></div>
+                <br>
                 <!-- Link to Airline list, update, and delete views -->
                 <a class="mr-3" href="{% url 'airlines:update_airline' airline.slug %}">Edit Airline</a>
                 <br>
