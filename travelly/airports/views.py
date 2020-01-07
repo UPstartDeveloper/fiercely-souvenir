@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def show_options(request):
+    '''Show options to request ride or hotel reservations.'''
+    return render(request, 'airports/index.html')

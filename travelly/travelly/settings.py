@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'trips',
     'airlines',
     'accounts',
+    'airports',
     'storages',
     'rest_framework',
 ]
