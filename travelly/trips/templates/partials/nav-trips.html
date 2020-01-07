@@ -5,7 +5,7 @@
     <div class="navbar-brand d-flex w-50 ml-2">
         <span class="text-white">
             <div class="row">
-                <h2>Hello, <strong>{{ user.username }}</strong>!</h2>
+                <h2><a href="{% url 'accounts:launch' %}" style="color: white;">Hello, <strong>{{ user.username }}</strong>!</a></h2>
                 <img src="{% static 'images/air-transport.png' %}" width=50px height=50px>
             </div>
         </span>
