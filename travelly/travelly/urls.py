@@ -23,6 +23,7 @@ urlpatterns = [
     path('trips/', include('trips.urls')),
     path('airlines/', include('airlines.urls')),
     path('api/', include('api.urls')),
+    path('airports/', include('airports.urls')),
 ]
 
 
