@@ -25,35 +25,56 @@
         </div>
     </div>
     <!-- format instructions for this trip -->
-    <p>
-        1. Locate your airport <strong>terminal</strong>. <br>
-        <i>This is the best place for you to enter the airport from!</i><br>
-        Here's how to figure out your airport terminal:
-        <ul>
-            <li>Know your departure airport: <strong>{{ trip.depart_from }}</strong></li>
-            <li>Know your airline: <strong>{{ trip.airline }}</strong></li>
-            <li>Check the information on your <i>airport website,</i> for which <i>terminal</i> to locate your <i>airline</i> in!</li>
-        </ul>
-        2. Arrive at the airport terminal. <br>
-        For novice fliers, I recommend arriving at least 3 hours before
-        the time your flight is scheduled to start boarding ("Boarding Time").<br><br>
-        2. Check-in time! Please locate <strong>your terminal: {{ trip.terminal }}</strong>, so that you <br>
-        can talk to the nice people at your airline
-         who will clear your boarding pass, <br>and assess your luggage
-        for any bags that need to be checked in. <br><br>
-        3. Go through security! Don't sweat this part: take a deep
-        breath, be patient, and be sure to review the guidelines on <br>
-        <strong><a href="https://www.tsa.gov/travel/security-screening/whatcanibring/all">The TSA website</a></strong>
-        before your day at the airport! <br><br>
-        4. You're almost to the plane! Please check your boarding pass <br>to
-         see which gate you will need to wait at, until it's boarding
-        time.  <br><br>
-        5. Get on the plane!  <br><br>
-        6. Enjoy the ride! Watch movies, read a book, nap, or have a <br>
-        bizarre conversation with the person sitting next to you... <br><br>
-        7. When you reach <strong>your destination at: {{ trip.arrive_at }}</strong>, you  <br>
-        will be able to get off the plane. Congratulations on making the trip! <br><br>
-    </p>
+    <ol>
+        <li>
+            <strong>Locate your airport terminal</strong>. <br>
+            <i>This is the best place for you to enter the airport from!</i><br>
+            Here's how to figure out your airport terminal:
+            <ul>
+                <li>Know your departure airport: <strong>{{ trip.depart_from }}</strong></li>
+                <li>Know your airline: <strong>{{ trip.airline }}</strong></li>
+                <li>Check the information on your <i>airport website,</i> for which <i>terminal</i> to locate your <i>airline</i> in!</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Arrive at the airport terminal. </strong><br>
+            For novice fliers, I recommend arriving at least <strong>2 hours before</strong><br>
+            the time your flight is scheduled to start boarding <i>("Boarding Time").</i>
+        </li>
+        <li>
+            <strong>Check-in time!</strong> <br>
+            Please locate the section of the terminal where the airline: <strong>{{ trip.airline }}</strong> is setup. <br>
+            Now, please talk to the nice people at your airline
+             who will clear your boarding pass, <br>and assess your luggage
+            for any bags that need to be checked in. <br>
+            Alternatively, if you to <i>skip check-in at the airport</i>, please lookup if <br>
+            <strong>the airline: {{ trip.airline }}</strong> allows check-in via their website or mobile app.
+        </li>
+        <li>
+            <strong>Go through security!</strong> <br>
+            Don't sweat this part: take a deep
+            breath, be patient, and be sure to review the guidelines on <br>
+            <strong><a href="https://www.tsa.gov/travel/security-screening/whatcanibring/all">The TSA website</a></strong>
+            before your day at the airport!
+        </li>
+        <li>
+            <strong>You're almost to the plane!</strong><br>
+            Please check your boarding pass see which gate you will need to wait at, <br>
+            until it's boarding time.
+        </li>
+        <li>
+            <strong>Get on the plane!</strong>
+        </li>
+        <li>
+            <strong>Enjoy the ride!</strong> <br>
+            Watch movies, read a book, nap, or have a
+            bizarre conversation with the person sitting next to you...
+        </li>
+        <li>
+            When you reach <strong>your destination at: {{ trip.arrive_at }}</strong>, you will be able to get off the plane. <br>
+            Congratulations on making the trip! <br><br>
+        </li>
+    </ol>
 
     <p class="text-muted">Posted on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p>
     <h5><a href="{% url 'trips:change-trip' trip.pk %}">Edit This Trip</a></h5>
