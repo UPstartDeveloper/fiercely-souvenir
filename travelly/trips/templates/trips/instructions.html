@@ -10,15 +10,6 @@
     {% endif %}
 {% endblock %}
 
-<!-- Open Graph Settings for Facebook Shares -->
-{% block shares %}
-    <meta property="og:url"                content="https://travelly-zr.herokuapp.com/trips/{{ trip.id }}/" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="Trip Instructions: {{ trip.title }}" />
-    <meta property="og:description"        content="Flying from {{ trip.depart_from }} to {{ trip.arrive_at }} soon? Check out my travel tips!" />
-    <meta property="og:image"              content="https://travelly-files.s3.us-west-1.amazonaws.com/images/Screen%20Shot%202020-01-06%20at%209.21.14%20AM.png" />
-{% endblock %}
-
 <!-- main content -->
 {% block content %}
 
@@ -87,13 +78,6 @@
     </ol>
 
     <p class="text-muted">Posted on: {{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</p>
-    <!-- Facebook Share Button -->
-    <div class="fb-like"
-    data-href="https://travelly-zr.herokuapp.com/trips/{{ trip.id }}/"
-    data-width="30" data-layout="standard"
-    data-action="recommend"
-    data-size="small"
-    data-share="true"></div>
     <h5><a href="{% url 'trips:change-trip' trip.pk %}">Edit This Trip</a></h5>
     <h5><a href="{% url 'trips:delete-trip' trip.pk %}">Delete Trip</a></h5>
     <h5><a href="{% url 'trips:all-trips' %}">Back to All Trips</a></h5>

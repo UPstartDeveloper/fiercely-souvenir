@@ -1,23 +1,31 @@
 <div class="card border-info mb-3">
-  <h3 class="card-header ">
+    <h3 class="card-header ">
       {{ trip.title }}
-  </h3>
-  <div class="card-body border-dark">
-    <p class="card-text text-dark">
-        <ul>
-            <!-- fields in note -->
-            <li>Posted by: {{ trip.passenger }}</li>
-            <li>Travelling with <strong>{{ trip.airline }}</strong></li>
-            <li>Went from <strong>{{ trip.depart_from }}</strong> to <strong>{{ trip.arrive_at }}</strong></li>
-        </ul>
-    </p>
-      <hr>
-      <div class="text-right">
-          <a href="{% url 'trips:trip-detail' trip.pk %}" title="See More">See More</a>
-      </div>
-  </div>
-  <div class="card-footer row">
-  <small class="text-muted">Created:{{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</small>
-  <img class="ml-auto" src="{{ trip.passenger.profile.mugshot.url }}" alt="" width=30px height=30px>
-  </div>
+      <!-- Facebook Share Button -->
+     <div class="fb-like"
+          data-href="https://travelly-zr.herokuapp.com/trips/"
+          data-width="30"
+          data-layout="standard"
+          data-action="recommend"
+          data-size="small"
+          data-share="true"></div>
+    </h3>
+    <div class="card-body border-dark">
+        <p class="card-text text-dark">
+            <ul>
+                <!-- fields in note -->
+                <li>Posted by: {{ trip.passenger }}</li>
+                <li>Travelling with <strong>{{ trip.airline }}</strong></li>
+                <li>Went from <strong>{{ trip.depart_from }}</strong> to <strong>{{ trip.arrive_at }}</strong></li>
+            </ul>
+        </p>
+        <hr>
+        <div class="text-right">
+            <a href="{% url 'trips:trip-detail' trip.pk %}" title="See More">See More</a>
+        </div>
+    </div>
+    <div class="card-footer row">
+        <small class="text-muted">Created:{{ trip.created|date:"SHORT_DATETIME_FORMAT" }}</small>
+        <img class="ml-auto" src="{{ trip.passenger.profile.mugshot.url }}" alt="" width=30px height=30px>
+    </div>
 </div>
