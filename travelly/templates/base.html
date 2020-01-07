@@ -14,20 +14,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Link to United Bootswatch Theme, and Custom CSS Styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    <!-- Preview for Facebook Shares -->
+    <!-- OG Settings for Airline Shares -->
+        <meta property="og:url"                content="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews/" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="{{ airline.title }}: Reviews by Users" />
+        <meta property="og:description"        content="What Are People Saying About {{ airline.title }}? Check it out on Travelly now!" />
+        <meta property="og:image"              content="{{ airline.logo.url }}" />
     <!-- Open Graph Settings for Facebook Trip Shares -->
         <meta property="og:url"                content="https://travelly-zr.herokuapp.com/trips/" />
         <meta property="og:type"               content="website" />
         <meta property="og:title"              content="Trip Instructions from Travelly" />
         <meta property="og:description"        content="Never flown before? Flying somewhere soon? Check out our travel tips!" />
         <meta property="og:image"              content="https://travelly-files.s3.us-west-1.amazonaws.com/images/Screen%20Shot%202020-01-06%20at%209.21.14%20AM.png" />
-
-        <!-- OG Settings for Airline Shares -->
-        <meta property="og:url"                content="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews/" />
-        <meta property="og:type"               content="website" />
-        <meta property="og:title"              content="{{ airline.title }}: Reviews by Users" />
-        <meta property="og:description"        content="What Are People Saying About {{ airline.title }}? Check it out on Travelly now!" />
-        <meta property="og:image"              content="{{ airline.logo.url }}" />
 </head>
 <body>
     <!-- Javscript SDK for Facebook API -->
