@@ -1,1 +1,35 @@
-knfkgnfknfkbnkfg
+<!-- airports/templates/airports/index.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-airports.html' %}
+    {% endif %}
+{% endblock %}
+
+<!-- PAGE CONTENT -->
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- Rideshare Button -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Need a Ride?</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Hotel Reservations Button -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Need a Hotel?</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
