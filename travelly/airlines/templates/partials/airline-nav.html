@@ -19,30 +19,30 @@
     <div class="collapse navbar-collapse" id="navbarContent">
          <ul class="list-group list-group-horizontal justify-content-end ml-auto" style="list-style-type: none;">
             <!-- buttons change based on authentication -->
-              {% if user.is_authenticated %}
-                  <div class="row ml-auto mr-2">
-                      <!-- Add an Airline -->
-                      <li>
-                          <a href="{% url 'airlines:create_airline' %}" class="btn btn-success ml-2">Add Airline</a>
-                      </li>
-                      <!-- Link to Trips App -->
-                      <li>
-                          <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>
-                      </li>
-                      <!-- Link to Accounts App -->
-                      <li>
-                          <a href="{% url 'accounts:acct_info' user.id %}" class="btn btn-danger ml-2">Account</a>
-                      </li>
-                      <!-- Link to Airports App -->
-                      <li>
-                          <a href="{% url 'airports:home' %}" class="btn btn-success ml-2">At the Airport</a>
-                      </li>
-                      <!-- Logout -->
-                      <li>
-                           <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
-                      </li>
-                  </div>
-              {% endif %}
+            {% if user.is_authenticated %}
+                <div class="row ml-auto mr-2">
+                    <!-- Add an Airline -->
+                    <li>
+                        <a href="{% url 'airlines:create_airline' %}" class="btn btn-success ml-2">Add Airline</a>
+                    </li>
+                    <!-- Link to Trips App -->
+                    <li>
+                        <a href="{% url 'trips:all-trips' %}" class="btn btn-danger ml-2">Trips</a>
+                    </li>
+                    <!-- Link to Accounts App -->
+                    <li>
+                        <a href="{% url 'accounts:acct_info' user.id %}" class="btn btn-danger ml-2">Account</a>
+                    </li>
+                    <!-- Link to Airports App -->
+                    <li>
+                        <a href="{% url 'airports:home' %}" class="btn btn-success ml-2">At the Airport</a>
+                    </li>
+                    <!-- Logout -->
+                    <li>
+                       <a href="{% url 'accounts:logout' %}" class="btn btn-secondary ml-2">Log Out</a>
+                    </li>
+                </div>
+            {% endif %}
         </ul>
     </div>
 </nav>
