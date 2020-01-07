@@ -11,16 +11,6 @@
     {% endif %}
 {% endblock %}
 
-<!-- OG Settings for Airline Shares -->
-{% block review-shares %}
-<meta property="og:url"                content="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews" />
-<meta property="og:type"               content="website" />
-<meta property="og:title"              content="{{ airline.title }}: Reviews by Users" />
-<meta property="og:description"        content="What Are People Saying About {{ airline.title }}? Check it out on Travelly now!" />
-<meta property="og:image"              content="{{ airline.logo.url }}" />
-<!-- Open Graph Settings for Facebook Review Shares -->
-{% endblock %}
-
 <!-- Main content -->
 {% block content %}
 
@@ -39,7 +29,7 @@
                 {% endif %}
                 <!-- Facebook Share button for Airlines -->
                 <div class="fb-like"
-                     data-href="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews"
+                     data-href="https://travelly-zr.herokuapp.com/airlines/{{ airline.slug }}/reviews/"
                      data-width="30"
                      data-layout="standard"
                      data-action="like"
