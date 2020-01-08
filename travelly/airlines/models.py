@@ -64,6 +64,16 @@ class Review(models.Model):
     comments = models.TextField(help_text=(
         "What was your experience like? All feedback is encouraged!"))
 
+    TICKET_TYPES = [
+        ('One-Way', 'One-Way Ticket'),
+        ('Round-trip', 'Round-Trip Ticket')
+    ]
+    ticket_type = models.CharField(choices=TICKET_TYPES,
+                                   max_length=200,
+                                   help_text=(
+                                    "What type of ticket did you buy?"),
+                                   unique=False, null=True)
+
     def __str__(self):
         '''Return the title of the Review for presentation purposes.'''
         return f"{self.airline} Review {self.id}"

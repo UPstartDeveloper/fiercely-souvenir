@@ -18,5 +18,6 @@ class ReviewForm(forms.ModelForm):
             'headline',
             'rating',
             'comments',
-            'price'
+            'price',
+            'ticket_type'
         ]
