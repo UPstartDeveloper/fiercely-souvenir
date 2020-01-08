@@ -29,23 +29,6 @@ class Trip(models.Model):
                                  blank=True, editable=True, help_text=(
                                     "Which airport are you flying to?"
                                  ))
-    SFO_GATES = (
-        ('G', 'International Terminal G'),
-        ('A', 'International Terminal A'),
-        ('2D', 'Terminal 2'),
-        ('1B', 'Harvey Milk Terminal 1B'),
-        ('1C', 'Harvey Milk Terminal 1C'),
-        ('3', 'Terminal 3'),
-    )
-    '''
-    terminal_help_text = (
-        "Check " +
-        "https://www.flysfo.com/flight-info/airlines-at-sfo to see which " +
-        " Terminal you need to check in at for your flight."
-    )
-    terminal = models.CharField(max_length=2, choices=SFO_GATES,
-                                help_text=terminal_help_text)
-    '''
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")
