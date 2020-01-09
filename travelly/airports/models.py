@@ -1,6 +1,7 @@
 from django.db import models
 from travelly.settings import ADDRESS_MAX_LENGTH
 from django.conf import settings
+from django.utils.text import slugify
 
 
 class AirportAddress(models.Model):
