@@ -60,9 +60,9 @@ class AirportDetail(DetailView):
            HttpResponse: the view of the detail template
 
         """
-        airports = self.queryset.get(slug__iexact=slug)
+        airport = self.queryset.get(slug__iexact=slug)
         context = {
-            'airports': airports
+            'airport': airport
         }
         return render(request, self.template_name, context)
 
