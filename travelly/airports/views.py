@@ -44,7 +44,26 @@ class AirportCreate(CreateView):
 
 class AirportDetail(DetailView):
     '''User is able to see hotels and car rentals nearby a specific airport.'''
-    pass
+    model = AirportAddress
+    template_name = 'airports/details.html'
+
+    def get(self, request, slug):
+        """Renders a page to show the boarding instructions for
+           a single Airport.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug value of the AirportAddress instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        airport = self.get_queryset().get(slug__iexact=slug)
+        context = {
+            'airport': airport
+        }
+        return render(request, self.template_name, context)
 
 
 class AirportUpdate(UpdateView):
