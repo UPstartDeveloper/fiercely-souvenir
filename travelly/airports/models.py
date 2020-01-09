@@ -32,6 +32,13 @@ class AirportAddress(models.Model):
         path_components = {'slug': self.slug}
         return reverse('airports:airport_details', kwargs=path_components)
 
+    def get_coordinates(self):
+        '''Return the geographical coordinates of an AirportAddress.'''
+        # get the address of the airport using Google maps api
+        # convert the address into latitude and longitude using Geocoding API
+        # return the coordinates
+        pass
+
     def save(self, *args, **kwargs):
         '''Creates a URL safe slug automatically when a new airport is made.'''
         if not self.pk:
