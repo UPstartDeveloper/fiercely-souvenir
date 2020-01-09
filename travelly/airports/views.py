@@ -17,3 +17,23 @@ from django.contrib import messages
 class AirportList(ListView):
     '''A list of the airports entered by users.'''
     pass
+
+
+class AirportCreate(CreateView):
+    '''User is able to add an airport.'''
+    pass
+
+
+class AirportDetail(DetailView):
+    '''User is able to see hotels and car rentals nearby a specific airport.'''
+    pass
+
+
+class AirportUpdate(UpdateView):
+    '''User is able to change details for a specific airport.'''
+    pass
+
+
+class AirportDelete(DeleteView):
+    '''User is able to delete an airport.'''
+    pass
