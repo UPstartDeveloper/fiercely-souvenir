@@ -13,8 +13,8 @@
 <!-- PAGE CONTENT -->
 {% block content %}
     <div class="container">
-        <h1>Airports {% if airports %}<small class="text-muted">({{ airports|length }} Airport{ airports|length|pluralize:"s" }})</small>{% endif %}</h1>
-        {% if trips %}
+        <h1>Airports {% if airports %}<small class="text-muted">({{ airports|length }} Airport{{ airports|length|pluralize:"s" }})</small>{% endif %}</h1>
+        {% if airports %}
             <div class="card-columns">
                 {% for airport in airports %}
                     {% include 'partials/airport-card.html' %}
