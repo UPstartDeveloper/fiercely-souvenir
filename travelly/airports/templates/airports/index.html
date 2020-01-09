@@ -13,23 +13,15 @@
 <!-- PAGE CONTENT -->
 {% block content %}
     <div class="container">
-        <div class="row">
-            <!-- Rideshare Button -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Need a Ride?</h2>
-                    </div>
-                </div>
+        <h1>Airports {% if trips %}<small class="text-muted">({{ trips|length }} Airports{ pages|length|pluralize:"s" }})</small>{% endif %}</h1>
+        {% if trips %}
+            <div class="card-columns">
+                {% for trip in trips %}
+                    {% include 'partials/airport-card.html' %}
+                {% endfor %}
             </div>
-            <!-- Hotel Reservations Button -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Need a Hotel?</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% else %}
+            <div class="alert alert-primary" role="alert">There are no Airports to display.</div>
+        {% endif %}
     </div>
 {% endblock %}
