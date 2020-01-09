@@ -82,4 +82,25 @@ class AirportUpdate(UpdateView):
 
 class AirportDelete(DeleteView):
     '''User is able to delete an airport.'''
-    pass
+    model = AirportAddress
+    template_name = 'airports/delete.html'
+    success_url = reverse_lazy('airports:home')
+    queryset = AirportAddress.objects.all()
+
+    def get(self, request, slug):
+        """Renders a page to show the boarding instructions for
+           a single Airport.
+
+           Parameters:
+           request(HttpRequest): the GET request sent to the server
+           slug(slug): unique slug value of the AirportAddress instance
+
+           Returns:
+           HttpResponse: the view of the detail template
+
+        """
+        airport = self.queryset.get(slug__iexact=slug)
+        context = {
+            'airport': airport
+        }
+        return render(request, self.template_name, context)
