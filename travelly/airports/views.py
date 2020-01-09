@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from airports.models import AirportAddress
+from airports.forms import AirportForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
@@ -35,7 +36,10 @@ class AirportList(ListView):
 
 class AirportCreate(CreateView):
     '''User is able to add an airport.'''
-    pass
+    model = AirportAddress
+    form_class = AirportForm
+    template_name = 'airports/create.html'
+    queryset = AirportAddress.objects.all()
 
 
 class AirportDetail(DetailView):
