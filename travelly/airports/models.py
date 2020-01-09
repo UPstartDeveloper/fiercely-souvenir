@@ -14,8 +14,8 @@ class AirportAddress(models.Model):
                             blank=True, editable=False,
                             help_text="Unique URL path to access this trip." +
                                       "Computer Generated.")
-    address = models.CharField(max_length=ADDRESS_MAX_LENGTH,
-                               blank=True, editable=True, help_text=(
+    location = models.CharField(max_length=ADDRESS_MAX_LENGTH,
+                                blank=True, editable=True, help_text=(
                                       "What's the full address of the airport?"
                                       ))
 

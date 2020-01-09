@@ -7,5 +7,5 @@ class AirportForm(forms.ModelForm):
     class Meta:
         model = AirportAddress
         fields = [
-            'title', 'address'
+            'title', 'location'
         ]
