@@ -9,7 +9,11 @@ class AirportAddress(models.Model):
     '''The address of the airport the User is at.'''
     title = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
                              unique=True,
-                             help_text="A memorable title for your trip.")
+                             help_text=(
+                                "For best results, please enter an IATA " +
+                                "airport code, or the full name of the " +
+                                "airport."
+                             ))
     slug = models.CharField(max_length=settings.FLIGHT_TITLE_MAX_LENGTH,
                             blank=True, editable=False,
                             help_text="Unique URL path to access this trip." +
