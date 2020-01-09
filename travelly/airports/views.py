@@ -16,7 +16,21 @@ from django.contrib import messages
 
 class AirportList(ListView):
     '''A list of the airports entered by users.'''
-    pass
+    model = AirportAddress
+    template_name = 'airports/index.html'
+
+    def get(self, request):
+        """Renders all the AirportAddress objects currently in the database.
+
+           Parameters:
+           request(HttpRequest): request sent to server from client
+
+           Returns:
+           HttpResponse: a view that displays AirportAddress objects
+
+        """
+        airports = self.get_queryset().all()
+        return render(request, self.template_name, {'airports': airports})
 
 
 class AirportCreate(CreateView):
