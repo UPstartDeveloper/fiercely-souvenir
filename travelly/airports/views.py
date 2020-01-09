@@ -9,6 +9,7 @@ from django.views.generic.edit import (
     CreateView,
     UpdateView,
     DeleteView)
+from django.utils.text import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -72,6 +73,11 @@ class AirportUpdate(UpdateView):
     model = AirportAddress
     form_class = AirportForm
     template_name = 'airports/update.html'
+
+    def form_valid(self, form):
+        '''If the title of the Airport changes, so does the slug.'''
+        form.instance.slug = slugify(form.instance.title, allow_unicode=True)
+        return super().form_valid(form)
 
 
 class AirportDelete(DeleteView):
