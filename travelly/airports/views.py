@@ -46,6 +46,7 @@ class AirportDetail(DetailView):
     '''User is able to see hotels and car rentals nearby a specific airport.'''
     model = AirportAddress
     template_name = 'airports/details.html'
+    queryset = AirportAddress.objects.all()
 
     def get(self, request, slug):
         """Renders a page to show the boarding instructions for
@@ -59,9 +60,9 @@ class AirportDetail(DetailView):
            HttpResponse: the view of the detail template
 
         """
-        airport = self.get_queryset().get(slug__iexact=slug)
+        airports = self.queryset.get(slug__iexact=slug)
         context = {
-            'airport': airport
+            'airports': airports
         }
         return render(request, self.template_name, context)
 
