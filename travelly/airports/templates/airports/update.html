@@ -1,1 +1,21 @@
-dkfggknf/ldns;lnb
+<!-- trips/templates/airports/update.html -->
+{% extends "base.html" %}
+
+<!-- NAVBAR -->
+{% block navbar %}
+    {% if not user.is_authenticated %}
+        {% include 'navbar.html' %}
+    {% else %}
+        {% include 'partials/nav-airports.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>See a Mistake?</h2>
+        <h3>Change the info we have for this airport</h3>
+        {% include 'form_template.html' %}
+            <h5><a href="{% url 'airports:home' %}">Back to All Airports</a></h5>
+    </div>
+
+{% endblock %}
