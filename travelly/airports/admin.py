@@ -1,3 +1,4 @@
 from django.contrib import admin
+from airports.models import AirportAddress
 
-# Register your models here.
+admin.site.register(AirportAddress)
