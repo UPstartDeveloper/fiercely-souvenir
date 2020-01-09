@@ -2,6 +2,7 @@ from django.db import models
 from travelly.settings import ADDRESS_MAX_LENGTH
 from django.conf import settings
 from django.utils.text import slugify
+from django.urls import reverse, reverse_lazy
 
 
 class AirportAddress(models.Model):
@@ -24,7 +25,8 @@ class AirportAddress(models.Model):
 
     def get_absolute_url(self):
         '''Returns a fully qualified path for an airport.'''
-        pass
+        path_components = {'slug': self.slug}
+        return reverse('airports:airport_details', kwargs=path_components)
 
     def save(self, *args, **kwargs):
         '''Creates a URL safe slug automatically when a new airport is made.'''
