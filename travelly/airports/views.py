@@ -69,7 +69,9 @@ class AirportDetail(DetailView):
 
 class AirportUpdate(UpdateView):
     '''User is able to change details for a specific airport.'''
-    pass
+    model = AirportAddress
+    form_class = AirportForm
+    template_name = 'airports/update.html'
 
 
 class AirportDelete(DeleteView):
