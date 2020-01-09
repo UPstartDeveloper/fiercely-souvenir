@@ -38,7 +38,7 @@ class Trip(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        '''Returns a fully qualified path for a page (i.e. /my-note).'''
+        '''Returns a fully qualified path for a trip.'''
         path_components = {'pk': self.pk}
         return reverse('trips:trip-detail', kwargs=path_components)
 

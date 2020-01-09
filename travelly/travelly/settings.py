@@ -35,6 +35,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
+ADDRESS_MAX_LENGTH = 1000
+
 # Application definition
 
 INSTALLED_APPS = [
