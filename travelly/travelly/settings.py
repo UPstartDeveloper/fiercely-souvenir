@@ -174,6 +174,8 @@ EMAIL_HOST_PASSWORD = f"{PASS_1} {PASS_2} {PASS_3} {PASS_4}"
 
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')
 
+# API key for Google Maps
+GMAPS_KEY = str(os.getenv('GMAPS_KEY'))
 
 # provision PostgreSQL for deployment
 db_from_env = dj_database_url.config()

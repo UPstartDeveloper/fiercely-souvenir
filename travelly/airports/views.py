@@ -62,8 +62,10 @@ class AirportDetail(DetailView):
 
         """
         airport = self.queryset.get(slug__iexact=slug)
+        lat_long = airport.get_coordinates()
         context = {
-            'airport': airport
+            'airport': airport,
+            'lat_long': lat_long
         }
         return render(request, self.template_name, context)
 

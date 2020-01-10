@@ -24,20 +24,18 @@
             <h3>What's Nearby?</h3>
         </div>
         <hr>
-        <div class="row">
-            <h4>Hotels:</h4>
-        </div>
-        <div class="row">
-            <h4>Car Rentals:</h4>
-        </div>
-        <div class="row">
-            <a href="{% url 'airports:edit_airport' airport.slug %}">Edit Airport</a>
-        </div>
-        <div class="row">
-            <a href="{% url 'airports:delete_airport' airport.slug %}">Delete this Airport</a>
-        </div>
-        <div class="row">
-            <a href="{% url 'airports:home' %}">Back to All Airports</a>
-        </div>
+
+        <h4>Hotels:</h4>
+        <p>Coordinates: {{ lat_long }}</p>
+
+
+        <h4>Car Rentals:</h4>
+        <hr>
+
+        <a href="{% url 'airports:edit_airport' airport.slug %}">Edit Airport</a>
+        <br>
+        <a href="{% url 'airports:delete_airport' airport.slug %}">Delete this Airport</a>
+        <br>
+        <a href="{% url 'airports:home' %}">Back to All Airports</a>
     </div>
 {% endblock %}

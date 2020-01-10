@@ -3,6 +3,8 @@ from travelly.settings import ADDRESS_MAX_LENGTH
 from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse, reverse_lazy
+import googlemaps
+from travelly.settings import GMAPS_KEY
 
 
 class AirportAddress(models.Model):
@@ -34,10 +36,15 @@ class AirportAddress(models.Model):
 
     def get_coordinates(self):
         '''Return the geographical coordinates of an AirportAddress.'''
+        # make the gmaps client
+        gmaps = googlemaps.Client(key=GMAPS_KEY)
         # get the address of the airport using Google maps api
+        address = gmaps.places(self.title)
         # convert the address into latitude and longitude using Geocoding API
+        coordinates = address['results'][0]['geometry']['location']
+        lat_long = (coordinates['lat'], coordinates['lng'])
         # return the coordinates
-        pass
+        return lat_long
 
     def save(self, *args, **kwargs):
         '''Creates a URL safe slug automatically when a new airport is made.'''
