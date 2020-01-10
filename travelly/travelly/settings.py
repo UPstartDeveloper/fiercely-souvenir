@@ -14,6 +14,7 @@ import os
 from dotenv import load_dotenv
 import dj_database_url
 import django_heroku
+from django import template
 
 load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -139,9 +140,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Custom template tag for indexing a list in Jinja
+# Credit for code goes to https://djangosnippets.org/snippets/2740/
+register = template.Library()
+
+
+@register.filter
+def get_at_index(list, index):
+    return list[index]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

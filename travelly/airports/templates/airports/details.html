@@ -1,5 +1,6 @@
 <!-- travelly/airports/templates/airports/details.html -->
 {% extends "base.html" %}
+{% load get_at_index %}
 
 <!-- NAVBAR -->
 {% block navbar %}
@@ -28,10 +29,12 @@
         <h4>Hotels:</h4>
         <ol>
             {% for hotel in hotels %}
-                <li>{{ hotel }}</li>
-                <ul>
-                    <li>Address: {{ hotel }}</li>
-                </ul>
+                {% for h in hotel %}
+                    <li>{{ hotel|get_at_index:forloop.counter0 }}</li>
+                    <!--{#}<ul>
+                        <li>Address: {{ hotel|get_at_index:forloop.counter0  }}</li>
+                    </ul>#}-->
+                {% endfor %}
             {% endfor %}
         </ol>
 
