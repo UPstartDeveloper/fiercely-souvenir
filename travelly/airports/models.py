@@ -46,6 +46,16 @@ class AirportAddress(models.Model):
         # return the coordinates
         return lat_long
 
+    def get_nearby_hotels(self, lat_long):
+        """Given the coordinates of this address, return nearby hotels using
+           the Google Maps Places API.
+
+        """
+        # make the google maps client
+        gmaps = googlemaps.Client(key=GMAPS_KEY)
+        # send a request for nearby hotels to the API
+        # return the names and addresses of the hotels
+
     def save(self, *args, **kwargs):
         '''Creates a URL safe slug automatically when a new airport is made.'''
         if not self.pk:
