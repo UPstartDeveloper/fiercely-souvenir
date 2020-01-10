@@ -26,6 +26,14 @@
         <hr>
 
         <h4>Hotels:</h4>
+        <ol>
+            {% for hotel in hotels %}
+                <li>{{ hotel }}</li>
+                <ul>
+                    <li>Address: {{ hotel }}</li>
+                </ul>
+            {% endfor %}
+        </ol>
 
 
         <h4>Car Rentals:</h4>

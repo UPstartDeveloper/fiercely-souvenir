@@ -54,7 +54,15 @@ class AirportAddress(models.Model):
         # make the google maps client
         gmaps = googlemaps.Client(key=GMAPS_KEY)
         # send a request for nearby hotels to the API
+        search = f'hotels near {self.title}'
+        places_result = gmaps.places(query=('hotel near ' + self.title))
         # return the names and addresses of the hotels
+        hotels = places_result.get("results")
+        addr = "formatted_address"  # a key to grab from API respomse
+        hotels_and_addresses = [
+            (hotel.get("name"), hotel.get(addr)) for hotel in hotels
+        ]
+        return hotels_and_addresses
 
     def save(self, *args, **kwargs):
         '''Creates a URL safe slug automatically when a new airport is made.'''
