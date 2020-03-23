@@ -92,7 +92,7 @@ If you are writing tests for the `api` package, you may also like to consult the
 - Django - web framework for the backend
 - Bootstrap 4 - styling the front end
 - PostgreSQL - production database schema
-- Django REST Framework - framework building the API (found in the [explorer_buddy.explorer.api package](/explorer_buddy/explorer/api/)).
+- Django REST Framework - framework building the API (found in the [travelly.api package](travelly/api/)).
 - AWS S3 - file storage for image uploads
 - Gmail - email server
 
